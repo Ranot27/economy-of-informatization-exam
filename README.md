@@ -12,12 +12,12 @@
 
 - `notebooks/` — Jupyter Notebook с решениями задач
 - `data/` — исходные данные для задач (в задачах 1–2 данные заданы в условии и записаны прямо в ноутбуках)
-- `reports/` — графики (`figures/`) и итоговые показатели (`*_summary.json`), экспортированные отчеты
+- `reports/` — экспортированные отчеты (HTML и PDF), графики (`figures/`) и итоговые показатели (`*_summary.json`)
 
 ## Установка и запуск
 
 ```bash
-git clone <адрес репозитория>
+git clone https://github.com/Ranot27/economy-of-informatization-exam.git
 cd economy-of-informatization-exam
 python -m venv venv
 source venv/bin/activate        # Linux/macOS
@@ -25,6 +25,9 @@ source venv/bin/activate        # Linux/macOS
 pip install -r requirements.txt
 jupyter lab
 ```
+
+Ноутбуки запускаются из папки `notebooks/` командой «Run All Cells». Все исходные данные задачи лежат
+в словаре `BASE` в начале ноутбука: достаточно изменить значение там, и расчет, таблицы и графики пересчитаются.
 
 Экспорт отчета в HTML:
 
@@ -34,14 +37,14 @@ jupyter nbconvert --to html --output-dir reports notebooks/01_crm_efficiency.ipy
 
 ## Список задач
 
-| № | Лекция | Задача | Ноутбук | Статус | Ключ зачета |
-|---|---|---|---|---|---|
-| 1 | 1 | Оценка экономической эффективности внедрения облачной CRM | [01_crm_efficiency.ipynb](notebooks/01_crm_efficiency.ipynb) | Выполнено | — |
-| 2 | 3 | Расчет критической массы и ценности социальной сети | [02_network_critical_mass.ipynb](notebooks/02_network_critical_mass.ipynb) | Выполнено | — |
+| № | Лекция | Задача | Ноутбук | Отчет | Статус | Ключ зачета |
+|---|---|---|---|---|---|---|
+| 1 | 1 | Оценка экономической эффективности внедрения облачной CRM | [01_crm_efficiency.ipynb](notebooks/01_crm_efficiency.ipynb) | [HTML](reports/01_crm_efficiency.html), [PDF](reports/01_crm_efficiency.pdf) | Выполнено | — |
+| 2 | 3 | Расчет критической массы и ценности социальной сети | [02_network_critical_mass.ipynb](notebooks/02_network_critical_mass.ipynb) | [HTML](reports/02_network_critical_mass.html), [PDF](reports/02_network_critical_mass.pdf) | Выполнено | — |
 
 ## Ключевые результаты
 
 | Задача | Результат |
 |---|---|
-| 1. CRM | NPV = 11,58 млн руб., ROI = 635% (508% по чистой прибыли), окупаемость на 5-м месяце |
-| 2. Соцсеть | Критическая масса 133 334 пользователя, достигается на 112-м месяце; NPV за 36 мес. = −60,1 млн руб. |
+| 1. CRM | NPV = 11,58 млн руб., ROI = 635% (508% по чистой прибыли), окупаемость на 4-м месяце |
+| 2. Соцсеть | Критическая масса 133 334 пользователя, достигается на 112-м месяце; NPV за 36 мес. = −60,10 млн руб. |
