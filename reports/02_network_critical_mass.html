@@ -8110,7 +8110,7 @@ a.anchor-link {
 <tr>
 <td>Д1</td>
 <td>Критическая масса считается по формуле из условия: доход ≥ затраты на поддержание + CAC, то есть $ARPU \cdot N \ge F + CAC$ и $N_{крит} = (F + CAC) / ARPU$. CAC здесь — стоимость привлечения одного пользователя</td>
-<td>Так записано в условии. Смысл: месячного дохода хватает на поддержание сети и на привлечение хотя бы одного нового пользователя. Что будет, если платить CAC за всех новых пользователей месяца, проверено в разделе 2.3</td>
+<td>Так записано в условии. Смысл: месячного дохода хватает на поддержание сети и на привлечение хотя бы одного нового пользователя.</td>
 </tr>
 <tr>
 <td>Д2</td>
@@ -8298,12 +8298,7 @@ a.anchor-link {
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<p><strong>Проверка (сверх условия): что, если платить CAC за всех новых пользователей месяца.</strong> В формуле условия CAC
-входит один раз. Но в формуле прибыли из задания 5 сеть платит CAC за каждого нового пользователя. Проверим, при
-каком числе пользователей месячная прибыль неотрицательна.</p>
-<p>Пусть в начале месяца $N$ пользователей и рост $g$. Тогда новых пользователей $g \cdot N$, а платят уже
-$N \cdot (1+g)$ человек:</p>
-<p>$$ARPU \cdot N \cdot (1+g) \ge F + CAC \cdot g \cdot N \quad\Rightarrow\quad N \ge \frac{F}{ARPU \cdot (1+g) - CAC \cdot g}$$</p>
+<p>Ниже для сравнения — еще два способа определить критическую массу.</p>
 </div>
 </div>
 </div>
@@ -8313,134 +8308,6 @@ $N \cdot (1+g)$ человек:</p>
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
 <div class="jp-InputPrompt jp-InputArea-prompt">In [6]:</div>
-<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
-<div class="cm-editor cm-s-jupyter">
-<div class="highlight hl-ipython3"><pre><span></span><span class="c1"># Сколько остается от дохода после оплаты роста и сколько пользователей нужно для П ≥ 0</span>
-<span class="n">rows</span> <span class="o">=</span> <span class="p">[]</span>
-<span class="k">for</span> <span class="n">growth</span> <span class="ow">in</span> <span class="nb">sorted</span><span class="p">({</span><span class="mi">0</span><span class="p">,</span> <span class="mf">0.01</span><span class="p">,</span> <span class="mf">0.02</span><span class="p">,</span> <span class="n">BASE</span><span class="p">[</span><span class="s2">"growth_before"</span><span class="p">],</span> <span class="n">BASE</span><span class="p">[</span><span class="s2">"growth_after"</span><span class="p">]}):</span>
-    <span class="n">income</span> <span class="o">=</span> <span class="n">BASE</span><span class="p">[</span><span class="s2">"arpu"</span><span class="p">]</span> <span class="o">*</span> <span class="p">(</span><span class="mi">1</span> <span class="o">+</span> <span class="n">growth</span><span class="p">)</span>         <span class="c1"># доход на одного пользователя начала месяца</span>
-    <span class="n">spend</span> <span class="o">=</span> <span class="n">BASE</span><span class="p">[</span><span class="s2">"cac"</span><span class="p">]</span> <span class="o">*</span> <span class="n">growth</span>                 <span class="c1"># расход на рост на того же пользователя</span>
-    <span class="n">left</span> <span class="o">=</span> <span class="n">income</span> <span class="o">-</span> <span class="n">spend</span>                        <span class="c1"># что остается на поддержание сети</span>
-    <span class="k">if</span> <span class="n">left</span> <span class="o">&lt;=</span> <span class="mf">1e-9</span><span class="p">:</span>
-        <span class="n">need</span> <span class="o">=</span> <span class="s2">"недостижимо"</span>
-    <span class="k">else</span><span class="p">:</span>
-        <span class="n">need</span> <span class="o">=</span> <span class="n">fmt</span><span class="p">(</span><span class="n">math</span><span class="o">.</span><span class="n">ceil</span><span class="p">(</span><span class="n">BASE</span><span class="p">[</span><span class="s2">"support"</span><span class="p">]</span> <span class="o">/</span> <span class="n">left</span><span class="p">))</span>
-        <span class="k">if</span> <span class="n">BASE</span><span class="p">[</span><span class="s2">"support"</span><span class="p">]</span> <span class="o">/</span> <span class="n">left</span> <span class="o">&gt;</span> <span class="n">BASE</span><span class="p">[</span><span class="s2">"market"</span><span class="p">]:</span>
-            <span class="n">need</span> <span class="o">+=</span> <span class="s2">" (больше рынка)"</span>
-    <span class="n">rows</span><span class="o">.</span><span class="n">append</span><span class="p">((</span><span class="n">pct</span><span class="p">(</span><span class="n">growth</span><span class="p">),</span> <span class="n">fmt</span><span class="p">(</span><span class="n">income</span><span class="p">,</span> <span class="mi">2</span><span class="p">),</span> <span class="n">fmt</span><span class="p">(</span><span class="n">spend</span><span class="p">,</span> <span class="mi">2</span><span class="p">),</span> <span class="n">fmt</span><span class="p">(</span><span class="n">left</span><span class="p">,</span> <span class="mi">2</span><span class="p">),</span> <span class="n">need</span><span class="p">))</span>
-<span class="n">cac_table</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">rows</span><span class="p">,</span> <span class="n">columns</span><span class="o">=</span><span class="p">[</span>
-    <span class="s2">"Платный рост в месяц"</span><span class="p">,</span> <span class="s2">"Доход, руб. на пользователя"</span><span class="p">,</span>
-    <span class="s2">"Расход на рост, руб. на пользователя"</span><span class="p">,</span> <span class="s2">"Остается, руб."</span><span class="p">,</span> <span class="s2">"Нужно пользователей"</span><span class="p">,</span>
-<span class="p">])</span>
-<span class="n">display</span><span class="p">(</span><span class="n">cac_table</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-</div>
-</div>
-<div class="jp-Cell-outputWrapper">
-<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
-</div>
-<div class="jp-OutputArea jp-Cell-outputArea">
-<div class="jp-OutputArea-child">
-<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
-<div class="jp-RenderedHTMLCommon jp-RenderedHTML jp-OutputArea-output" data-mime-type="text/html" tabindex="0">
-<div>
-<style scoped="">
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
-
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
-</style>
-<table border="1" class="dataframe">
-<thead>
-<tr style="text-align: right;">
-<th></th>
-<th>Платный рост в месяц</th>
-<th>Доход, руб. на пользователя</th>
-<th>Расход на рост, руб. на пользователя</th>
-<th>Остается, руб.</th>
-<th>Нужно пользователей</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<th>0</th>
-<td>0%</td>
-<td>15,00</td>
-<td>0,00</td>
-<td>15,00</td>
-<td>133 334</td>
-</tr>
-<tr>
-<th>1</th>
-<td>1%</td>
-<td>15,15</td>
-<td>5,00</td>
-<td>10,15</td>
-<td>197 045</td>
-</tr>
-<tr>
-<th>2</th>
-<td>2%</td>
-<td>15,30</td>
-<td>10,00</td>
-<td>5,30</td>
-<td>377 359</td>
-</tr>
-<tr>
-<th>3</th>
-<td>3%</td>
-<td>15,45</td>
-<td>15,00</td>
-<td>0,45</td>
-<td>4 444 445 (больше рынка)</td>
-</tr>
-<tr>
-<th>4</th>
-<td>15%</td>
-<td>17,25</td>
-<td>75,00</td>
-<td>−57,75</td>
-<td>недостижимо</td>
-</tr>
-</tbody>
-</table>
-</div>
-</div>
-</div>
-</div>
-</div>
-</div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=cell-15">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<p><strong>Вывод проверки.</strong> При росте 3% расход на рост равен 500 × 3% = 15 руб. на пользователя — почти весь доход с него.
-На поддержание остается 0,45 руб., и для неотрицательной прибыли нужно больше 4 млн пользователей при населении
-города 1 млн. Значит, пока сеть платит за каждого нового пользователя, прибыли у нее не будет при любом размере.
-Этот вывод подтверждается расчетом NPV в разделе 2.5.</p>
-<p>Строка с ростом 0% — сеть никого не привлекает и покрывает только поддержание. Это вариант без CAC, он есть
-в таблице ниже.</p>
-<p>Ниже для сравнения — еще два способа определить критическую массу.</p>
-</div>
-</div>
-</div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=cell-16">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [7]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
 <div class="highlight hl-ipython3"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">months_to</span><span class="p">(</span><span class="n">level</span><span class="p">,</span> <span class="n">growth</span><span class="p">):</span>
@@ -8524,7 +8391,7 @@ $N \cdot (1+g)$ человек:</p>
 </div>
 </div>
 </div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=cell-17">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=cell-15">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
@@ -8538,12 +8405,12 @@ $N \cdot (1+g)$ человек:</p>
 </div>
 </div>
 </div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=cell-18">
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=cell-16">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [8]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In [7]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
 <div class="highlight hl-ipython3"><pre><span></span><span class="c1"># Время достижения критической массы: по формуле и по помесячной модели</span>
@@ -8583,7 +8450,7 @@ $N \cdot (1+g)$ человек:</p>
 </div>
 </div>
 </div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=cell-19">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=cell-17">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
@@ -8593,12 +8460,12 @@ $N \cdot (1+g)$ человек:</p>
 </div>
 </div>
 </div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=cell-20">
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=cell-18">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [9]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In [8]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
 <div class="highlight hl-ipython3"><pre><span></span><span class="c1"># Показываем 1-й месяц и далее каждый шестой; деньги — в тыс. руб.</span>
@@ -8737,12 +8604,12 @@ $N \cdot (1+g)$ человек:</p>
 </div>
 </div>
 </div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=cell-21">
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=cell-19">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [10]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In [9]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
 <div class="highlight hl-ipython3"><pre><span></span><span class="c1"># Закон Мэткалфа: как выросла ценность сети за горизонт</span>
@@ -8794,7 +8661,7 @@ $N \cdot (1+g)$ человек:</p>
 </div>
 </div>
 </div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=cell-22">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=cell-20">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
@@ -8804,12 +8671,12 @@ $N \cdot (1+g)$ человек:</p>
 </div>
 </div>
 </div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=cell-23">
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=cell-21">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [11]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In [10]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
 <div class="highlight hl-ipython3"><pre><span></span><span class="c1"># Задание 6. NPV проекта за горизонт оценки</span>
@@ -8912,7 +8779,7 @@ $N \cdot (1+g)$ человек:</p>
 </div>
 </div>
 </div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=cell-24">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=cell-22">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
@@ -8926,12 +8793,12 @@ NPV не меняются, а оптимистичный становится х
 </div>
 </div>
 </div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=cell-25">
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=cell-23">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [12]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In [11]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
 <div class="highlight hl-ipython3"><pre><span></span><span class="c1"># Экономика одного пользователя (сверх условия): успевает ли он окупить свое привлечение</span>
@@ -8964,12 +8831,12 @@ NPV не меняются, а оптимистичный становится х
 </div>
 </div>
 </div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=cell-26">
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=cell-24">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [13]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In [12]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
 <div class="highlight hl-ipython3"><pre><span></span><span class="c1"># Задание 8, вариант 1. Темп роста остается 3% весь срок. Тогда NPV = ARPU × A − B,</span>
@@ -8998,12 +8865,12 @@ NPV не меняются, а оптимистичный становится х
 </div>
 </div>
 </div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=cell-27">
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=cell-25">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [14]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In [13]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
 <div class="highlight hl-ipython3"><pre><span></span><span class="c1"># Задание 8, вариант 2. Учитываем, что при большем ARPU критическая масса</span>
@@ -9070,7 +8937,7 @@ NPV при ARPU = 197 руб.: 0,49 млн руб.
 </div>
 </div>
 </div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=cell-28">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=cell-26">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
@@ -9081,12 +8948,12 @@ NPV при ARPU = 197 руб.: 0,49 млн руб.
 </div>
 </div>
 </div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=cell-29">
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=cell-27">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [15]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In [14]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
 <div class="highlight hl-ipython3"><pre><span></span><span class="c1"># Сколько пользователей докупить на старте, чтобы сдвинуть весь рост на 6 месяцев</span>
@@ -9133,12 +9000,12 @@ NPV за 180 мес. меняется на +19,7 млн руб.
 </div>
 </div>
 </div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=cell-30">
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=cell-28">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [16]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In [15]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
 <div class="highlight hl-ipython3"><pre><span></span><span class="c1"># Полная цена пути до критической массы</span>
@@ -9172,7 +9039,7 @@ NPV за 180 мес. меняется на +19,7 млн руб.
 </div>
 </div>
 </div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=cell-31">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=cell-29">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
@@ -9184,12 +9051,12 @@ NPV за 180 мес. меняется на +19,7 млн руб.
 </div>
 </div>
 </div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=cell-32">
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=cell-30">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [17]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In [16]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
 <div class="highlight hl-ipython3"><pre><span></span><span class="c1"># Три стратегии: аргументы для функции simulate</span>
@@ -9284,7 +9151,7 @@ NPV за 180 мес. меняется на +19,7 млн руб.
 </div>
 </div>
 </div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=cell-33">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=cell-31">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
@@ -9294,12 +9161,12 @@ NPV за 180 мес. меняется на +19,7 млн руб.
 </div>
 </div>
 </div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=cell-34">
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=cell-32">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [18]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In [17]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
 <div class="highlight hl-ipython3"><pre><span></span><span class="c1"># График 1. Рост числа пользователей в трех сценариях и критическая масса</span>
@@ -9338,12 +9205,12 @@ NPV за 180 мес. меняется на +19,7 млн руб.
 </div>
 </div>
 </div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=cell-35">
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=cell-33">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [19]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In [18]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
 <div class="highlight hl-ipython3"><pre><span></span><span class="c1"># График 2. Доход и затраты по месяцам в базовом варианте (без месяца 0)</span>
@@ -9378,12 +9245,12 @@ NPV за 180 мес. меняется на +19,7 млн руб.
 </div>
 </div>
 </div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=cell-36">
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=cell-34">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [20]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In [19]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
 <div class="highlight hl-ipython3"><pre><span></span><span class="c1"># График 3. Закон Мэткалфа: во сколько раз выросли пользователи и ценность сети</span>
@@ -9417,12 +9284,12 @@ NPV за 180 мес. меняется на +19,7 млн руб.
 </div>
 </div>
 </div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=cell-37">
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=cell-35">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [21]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In [20]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
 <div class="highlight hl-ipython3"><pre><span></span><span class="c1"># График 4. NPV в зависимости от ARPU</span>
@@ -9457,12 +9324,12 @@ NPV за 180 мес. меняется на +19,7 млн руб.
 </div>
 </div>
 </div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=cell-38">
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=cell-36">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [22]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In [21]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
 <div class="highlight hl-ipython3"><pre><span></span><span class="c1"># График 5. Накопленный дисконтированный денежный поток по стратегиям</span>
@@ -9495,12 +9362,12 @@ NPV за 180 мес. меняется на +19,7 млн руб.
 </div>
 </div>
 </div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=cell-39">
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=cell-37">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [23]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In [22]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
 <div class="highlight hl-ipython3"><pre><span></span><span class="c1"># Сохраняем главные показатели в файл reports/02_summary.json</span>
@@ -9547,7 +9414,7 @@ NPV за 180 мес. меняется на +19,7 млн руб.
 </div>
 </div>
 </div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=cell-40">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=cell-38">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
@@ -9590,7 +9457,7 @@ NPV за 180 мес. меняется на +19,7 млн руб.
 </div>
 </div>
 </div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=cell-41">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=cell-39">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
