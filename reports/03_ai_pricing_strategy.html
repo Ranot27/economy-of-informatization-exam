@@ -9347,7 +9347,8 @@ Freemium, подписка, динамическое и персонализир
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h3 id="2.6.-%D0%A7%D0%B0%D1%81%D1%82%D1%8C-4.-%D0%94%D0%B0%D0%BD%D0%BD%D1%8B%D0%B5-%D0%B4%D0%BB%D1%8F-%D0%B2%D1%8B%D0%B1%D0%BE%D1%80%D0%B0-%D1%81%D1%82%D1%80%D0%B0%D1%82%D0%B5%D0%B3%D0%B8%D0%B8-%D0%B8-%D0%BC%D0%B5%D1%82%D1%80%D0%B8%D0%BA%D0%B8-(%D0%B7%D0%B0%D0%B4%D0%B0%D0%BD%D0%B8%D1%8F-8%E2%80%939)">2.6. Часть 4. Данные для выбора стратегии и метрики (задания 8–9)<a class="anchor-link" href="#2.6.-%D0%A7%D0%B0%D1%81%D1%82%D1%8C-4.-%D0%94%D0%B0%D0%BD%D0%BD%D1%8B%D0%B5-%D0%B4%D0%BB%D1%8F-%D0%B2%D1%8B%D0%B1%D0%BE%D1%80%D0%B0-%D1%81%D1%82%D1%80%D0%B0%D1%82%D0%B5%D0%B3%D0%B8%D0%B8-%D0%B8-%D0%BC%D0%B5%D1%82%D1%80%D0%B8%D0%BA%D0%B8-(%D0%B7%D0%B0%D0%B4%D0%B0%D0%BD%D0%B8%D1%8F-8%E2%80%939)">¶</a></h3><p>Сводим в одну таблицу результаты расчетов и качественные оценки стратегий из лекции (раздел 7.1).</p>
+<h3 id="2.6.-%D0%A7%D0%B0%D1%81%D1%82%D1%8C-4.-%D0%92%D1%8B%D0%B1%D0%BE%D1%80-%D1%81%D1%82%D1%80%D0%B0%D1%82%D0%B5%D0%B3%D0%B8%D0%B8-%D0%B8-%D0%BC%D0%B5%D1%82%D1%80%D0%B8%D0%BA%D0%B8-(%D0%B7%D0%B0%D0%B4%D0%B0%D0%BD%D0%B8%D1%8F-8%E2%80%939)">2.6. Часть 4. Выбор стратегии и метрики (задания 8–9)<a class="anchor-link" href="#2.6.-%D0%A7%D0%B0%D1%81%D1%82%D1%8C-4.-%D0%92%D1%8B%D0%B1%D0%BE%D1%80-%D1%81%D1%82%D1%80%D0%B0%D1%82%D0%B5%D0%B3%D0%B8%D0%B8-%D0%B8-%D0%BC%D0%B5%D1%82%D1%80%D0%B8%D0%BA%D0%B8-(%D0%B7%D0%B0%D0%B4%D0%B0%D0%BD%D0%B8%D1%8F-8%E2%80%939)">¶</a></h3><p>Сводим в одну таблицу результаты расчетов и качественные оценки стратегий из лекции (раздел 7.1) и выбираем
+стратегию.</p>
 </div>
 </div>
 </div>
@@ -9462,8 +9463,25 @@ Freemium, подписка, динамическое и персонализир
 <span class="p">})</span><span class="o">.</span><span class="n">T</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">LECTURE_MATRIX</span><span class="p">)</span>
 <span class="n">display</span><span class="p">(</span><span class="n">summary_table</span><span class="p">)</span>
 
-<span class="c1"># Выбранная стратегия; обоснование — в разделе 4.2</span>
+<span class="c1"># Задание 8. Выбранная стратегия (причины выбора — в разделе 4.2)</span>
 <span class="n">CHOICE</span> <span class="o">=</span> <span class="s2">"Подписка"</span>
+<span class="n">chosen</span> <span class="o">=</span> <span class="n">STRATEGIES</span><span class="p">[</span><span class="n">CHOICE</span><span class="p">]</span>
+<span class="n">worst_ratio</span> <span class="o">=</span> <span class="n">sens_ratio</span><span class="p">[</span><span class="n">CHOICE</span><span class="p">]</span><span class="o">.</span><span class="n">min</span><span class="p">()</span>                     <span class="c1"># LTV/CAC в худшем варианте</span>
+<span class="n">lecture</span> <span class="o">=</span> <span class="n">LECTURE_MATRIX</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">CHOICE</span><span class="p">]</span>                       <span class="c1"># оценки стратегии из лекции</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Ответ на задание 8: выбираем стратегию «</span><span class="si">{</span><span class="n">CHOICE</span><span class="si">}</span><span class="s2">»."</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"  Цена — </span><span class="si">{</span><span class="n">fmt</span><span class="p">(</span><span class="n">price_of</span><span class="p">(</span><span class="n">chosen</span><span class="p">))</span><span class="si">}</span><span class="s2"> руб. в месяц, конверсия — </span><span class="si">{</span><span class="n">pct</span><span class="p">(</span><span class="n">chosen</span><span class="p">[</span><span class="s1">'conversion'</span><span class="p">])</span><span class="si">}</span><span class="s2">, "</span>
+      <span class="sa">f</span><span class="s2">"Churn — </span><span class="si">{</span><span class="n">pct</span><span class="p">(</span><span class="n">chosen</span><span class="p">[</span><span class="s1">'churn'</span><span class="p">])</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"  ARPU — </span><span class="si">{</span><span class="n">fmt</span><span class="p">(</span><span class="n">arpu_of</span><span class="p">(</span><span class="n">chosen</span><span class="p">),</span><span class="w"> </span><span class="mi">1</span><span class="p">)</span><span class="si">}</span><span class="s2"> руб. в месяц, LTV — </span><span class="si">{</span><span class="n">fmt</span><span class="p">(</span><span class="n">ltv_of</span><span class="p">(</span><span class="n">chosen</span><span class="p">))</span><span class="si">}</span><span class="s2"> руб."</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"  LTV/CAC в худшем варианте — </span><span class="si">{</span><span class="n">fmt</span><span class="p">(</span><span class="n">worst_ratio</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">)</span><span class="si">}</span><span class="s2">: порог </span><span class="si">{</span><span class="n">TARGET_LTV_CAC</span><span class="si">}</span><span class="s2"> "</span>
+      <span class="o">+</span> <span class="p">(</span><span class="s2">"выдержан"</span> <span class="k">if</span> <span class="n">worst_ratio</span> <span class="o">&gt;=</span> <span class="n">TARGET_LTV_CAC</span> <span class="k">else</span> <span class="s2">"не выдержан"</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"  NPV за </span><span class="si">{</span><span class="n">YEARS</span><span class="si">}</span><span class="s2"> года — </span><span class="si">{</span><span class="n">fmt</span><span class="p">(</span><span class="n">npv_by_strategy</span><span class="p">[</span><span class="n">CHOICE</span><span class="p">]</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="n">MLN</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">)</span><span class="si">}</span><span class="s2"> млн руб."</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"  По лекции: сложность внедрения — </span><span class="si">{</span><span class="n">lecture</span><span class="p">[</span><span class="s1">'Сложность внедрения'</span><span class="p">]</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span><span class="si">}</span><span class="s2">, "</span>
+      <span class="sa">f</span><span class="s2">"затраты на внедрение — </span><span class="si">{</span><span class="n">lecture</span><span class="p">[</span><span class="s1">'Затраты на внедрение'</span><span class="p">]</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span><span class="si">}</span><span class="s2">, "</span>
+      <span class="sa">f</span><span class="s2">"риск пользователей — </span><span class="si">{</span><span class="n">lecture</span><span class="p">[</span><span class="s1">'Риск пользователей'</span><span class="p">]</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">()</span>
+
+<span class="c1"># Сравнение выбранной стратегии с лидером по NPV</span>
 <span class="n">gap</span> <span class="o">=</span> <span class="n">npv_by_strategy</span><span class="p">[</span><span class="n">best_npv</span><span class="p">]</span> <span class="o">-</span> <span class="n">npv_by_strategy</span><span class="p">[</span><span class="n">CHOICE</span><span class="p">]</span>
 <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Лучший NPV у стратегии «</span><span class="si">{</span><span class="n">best_npv</span><span class="si">}</span><span class="s2">». Отставание стратегии «</span><span class="si">{</span><span class="n">CHOICE</span><span class="si">}</span><span class="s2">»: "</span>
       <span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="n">fmt</span><span class="p">(</span><span class="n">gap</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="n">MLN</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">)</span><span class="si">}</span><span class="s2"> млн руб., это </span><span class="si">{</span><span class="n">pct</span><span class="p">(</span><span class="n">gap</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="nb">abs</span><span class="p">(</span><span class="n">npv_by_strategy</span><span class="p">[</span><span class="n">CHOICE</span><span class="p">]),</span><span class="w"> </span><span class="mi">1</span><span class="p">)</span><span class="si">}</span><span class="s2"> ее NPV"</span><span class="p">)</span>
@@ -9570,7 +9588,14 @@ Freemium, подписка, динамическое и персонализир
 <div class="jp-OutputArea-child">
 <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
 <div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
-<pre>Лучший NPV у стратегии «Персонализированная». Отставание стратегии «Подписка»: 1,46 млн руб., это 2,9% ее NPV
+<pre>Ответ на задание 8: выбираем стратегию «Подписка».
+  Цена — 1 500 руб. в месяц, конверсия — 20%, Churn — 5%
+  ARPU — 300,0 руб. в месяц, LTV — 6 000 руб.
+  LTV/CAC в худшем варианте — 5,25: порог 3 выдержан
+  NPV за 3 года — −50,07 млн руб.
+  По лекции: сложность внедрения — низкая, затраты на внедрение — низкие, риск пользователей — низкий
+
+Лучший NPV у стратегии «Персонализированная». Отставание стратегии «Подписка»: 1,46 млн руб., это 2,9% ее NPV
 Динамическая: тот же ARPU, что у стратегии «Подписка», при средней цене 2 000 руб. (диапазон 500–2 000, в расчете 1 250)
 Персонализированная: тот же ARPU, что у стратегии «Подписка», при средней цене 2 500 руб. (диапазон 300–5 000, в расчете 2 650)
 </pre>
@@ -9591,7 +9616,6 @@ Freemium, подписка, динамическое и персонализир
 <span class="n">TARGET_PAYBACK</span> <span class="o">=</span> <span class="mi">12</span>         <span class="c1"># окупаемость CAC: быстрее 12 месяцев</span>
 
 <span class="c1"># Задание 9. Ключевые метрики выбранной стратегии: значение по расчету и цель из лекции</span>
-<span class="n">chosen</span> <span class="o">=</span> <span class="n">STRATEGIES</span><span class="p">[</span><span class="n">CHOICE</span><span class="p">]</span>
 <span class="n">users</span> <span class="o">=</span> <span class="n">users_by_year</span><span class="p">()</span>
 <span class="n">mrr</span> <span class="o">=</span> <span class="p">[</span><span class="n">arpu_of</span><span class="p">(</span><span class="n">chosen</span><span class="p">)</span> <span class="o">*</span> <span class="n">n</span> <span class="o">/</span> <span class="n">MLN</span> <span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="n">users</span><span class="p">[</span><span class="mi">1</span><span class="p">:]]</span>              <span class="c1"># MRR по годам, млн руб.</span>
 <span class="n">ratios</span> <span class="o">=</span> <span class="p">[</span><span class="n">ltv_of</span><span class="p">(</span><span class="n">chosen</span><span class="p">)</span> <span class="o">/</span> <span class="n">cac</span> <span class="k">for</span> <span class="n">cac</span> <span class="ow">in</span> <span class="n">BASE</span><span class="p">[</span><span class="s2">"cac"</span><span class="p">]</span><span class="o">.</span><span class="n">values</span><span class="p">()]</span>   <span class="c1"># LTV/CAC по каналам</span>
@@ -9961,7 +9985,8 @@ Freemium — −71,10. Из этих сумм 15 млн руб. — затрат
 подписки мал: 1,46 млн руб. NPV, или 2,9%. При этом ее результат зависит от допущения Д1: она обгоняет
 подписку, только если средняя цена выше 2 500 руб., а в расчете принято 2 650 руб. У подписки все числа взяты
 из условия без допущений о цене. Динамическая стратегия сравнялась бы с подпиской по ARPU только при средней
-цене 2 000 руб., то есть если бы все платили верхнюю границу диапазона.</li>
+цене 2 000 руб., то есть если бы все платили верхнюю границу диапазона. Итог: выбираем подписку, причины —
+в разделе 4.2.</li>
 </ul>
 </div>
 </div>
@@ -9982,7 +10007,40 @@ LTV 7 950 руб., NPV −48,62 млн руб.) и подписка (300 руб.
 (24 млн руб. в год). Выбор ценовой стратегии уменьшает убыток, но не убирает его — нужен рост базы.</li>
 <li><strong>Оптимальная стратегия для вывода на рынок — подписка</strong> (обоснование в разделе 4.2).</li>
 </ol>
-<h3 id="4.2.-%D0%9F%D1%80%D0%B0%D0%BA%D1%82%D0%B8%D1%87%D0%B5%D1%81%D0%BA%D0%B8%D0%B5-%D1%80%D0%B5%D0%BA%D0%BE%D0%BC%D0%B5%D0%BD%D0%B4%D0%B0%D1%86%D0%B8%D0%B8-%D0%B4%D0%BB%D1%8F-%C2%ABAI-%D0%9A%D0%BE%D0%BF%D0%B8%D1%80%D0%B0%D0%B9%D1%82%D0%B5%D1%80%C2%BB">4.2. Практические рекомендации для «AI-Копирайтер»<a class="anchor-link" href="#4.2.-%D0%9F%D1%80%D0%B0%D0%BA%D1%82%D0%B8%D1%87%D0%B5%D1%81%D0%BA%D0%B8%D0%B5-%D1%80%D0%B5%D0%BA%D0%BE%D0%BC%D0%B5%D0%BD%D0%B4%D0%B0%D1%86%D0%B8%D0%B8-%D0%B4%D0%BB%D1%8F-%C2%ABAI-%D0%9A%D0%BE%D0%BF%D0%B8%D1%80%D0%B0%D0%B9%D1%82%D0%B5%D1%80%C2%BB">¶</a></h3><p><strong>Выбор стратегии (задание 8).</strong> Рекомендуется подписка за 1 500 руб. в месяц с пробным периодом. Причины:</p>
+<h3 id="4.2.-%D0%9F%D1%80%D0%B0%D0%BA%D1%82%D0%B8%D1%87%D0%B5%D1%81%D0%BA%D0%B8%D0%B5-%D1%80%D0%B5%D0%BA%D0%BE%D0%BC%D0%B5%D0%BD%D0%B4%D0%B0%D1%86%D0%B8%D0%B8-%D0%B4%D0%BB%D1%8F-%C2%ABAI-%D0%9A%D0%BE%D0%BF%D0%B8%D1%80%D0%B0%D0%B9%D1%82%D0%B5%D1%80%C2%BB">4.2. Практические рекомендации для «AI-Копирайтер»<a class="anchor-link" href="#4.2.-%D0%9F%D1%80%D0%B0%D0%BA%D1%82%D0%B8%D1%87%D0%B5%D1%81%D0%BA%D0%B8%D0%B5-%D1%80%D0%B5%D0%BA%D0%BE%D0%BC%D0%B5%D0%BD%D0%B4%D0%B0%D1%86%D0%B8%D0%B8-%D0%B4%D0%BB%D1%8F-%C2%ABAI-%D0%9A%D0%BE%D0%BF%D0%B8%D1%80%D0%B0%D0%B9%D1%82%D0%B5%D1%80%C2%BB">¶</a></h3><p><strong>Ответ на задание 8: оптимальная ценовая стратегия для «AI-Копирайтер» — подписка за 1 500 руб. в месяц
+с пробным периодом.</strong></p>
+<table>
+<thead>
+<tr>
+<th>Стратегия</th>
+<th>Решение</th>
+<th>Главная причина</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Подписка</td>
+<td><strong>Выбираем</strong></td>
+<td>NPV −50,07 млн руб. — второй результат; LTV/CAC выше порога 3 во всех каналах и при любом изменении параметров; цена задана в условии; сложность, затраты на внедрение и риск — низкие</td>
+</tr>
+<tr>
+<td>Персонализированная</td>
+<td>Не выбираем</td>
+<td>NPV лучше всего на 1,46 млн руб. (2,9%), но он держится на допущении о средней цене; сложность и затраты на внедрение — очень высокие, риск — высокий</td>
+</tr>
+<tr>
+<td>Динамическая</td>
+<td>Не выбираем</td>
+<td>NPV −59,17 млн руб.; LTV/CAC в рекламе 2,1 и при падении конверсии 2,73 — ниже порога 3</td>
+</tr>
+<tr>
+<td>Freemium</td>
+<td>Не выбираем</td>
+<td>NPV −71,10 млн руб.; LTV/CAC ниже порога 3 везде, кроме вирального роста</td>
+</tr>
+</tbody>
+</table>
+<p>Причины выбора подписки:</p>
 <ol>
 <li>По расчету она почти не уступает лидеру: разница в NPV 2,9%, LTV/CAC выше порога во всех каналах.</li>
 <li>Ее числа надежнее: цена задана в условии одним числом. Результат персонализированной стратегии держится на
