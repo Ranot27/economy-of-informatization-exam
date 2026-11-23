@@ -8056,94 +8056,15 @@ a.anchor-link {
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h3 id="1.2.-%D0%A1%D0%BF%D1%80%D0%B0%D0%B2%D0%BE%D1%87%D0%BD%D1%8B%D0%B5-%D0%B4%D0%B0%D0%BD%D0%BD%D1%8B%D0%B5">1.2. Справочные данные<a class="anchor-link" href="#1.2.-%D0%A1%D0%BF%D1%80%D0%B0%D0%B2%D0%BE%D1%87%D0%BD%D1%8B%D0%B5-%D0%B4%D0%B0%D0%BD%D0%BD%D1%8B%D0%B5">¶</a></h3><p><strong>Из лекции №3:</strong></p>
-<ul>
-<li>закон Мэткалфа: ценность сети $V(N) = k \cdot N^2$;</li>
-<li>критическая масса — минимальное число пользователей, при котором сеть становится самоподдерживающейся.
-В лекции это записано как $V(N) &gt; C(N)$, где $C(N)$ — затраты на поддержание сети.</li>
-</ul>
-<p><strong>Из условия задачи:</strong> критическая масса — число пользователей, при котором «доход ≥ затраты на поддержание + CAC».
-Темпы роста для пессимистичного и оптимистичного сценариев заданы в задании 7.</p>
-<p><strong>Сверх условия:</strong> длинный горизонт 180 месяцев (15 лет) нужен только чтобы увидеть весь путь сети до критической
-массы. Все показатели проекта считаются за 36 месяцев.</p>
-</div>
-</div>
-</div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs" id="cell-id=cell-06">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [3]:</div>
-<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
-<div class="cm-editor cm-s-jupyter">
-<div class="highlight hl-ipython3"><pre><span></span><span class="c1"># Сценарии темпов роста из задания 7: (до критической массы, после нее)</span>
-<span class="n">GROWTH_SCENARIOS</span> <span class="o">=</span> <span class="p">{</span>
-    <span class="s2">"Пессимистичный"</span><span class="p">:</span> <span class="p">(</span><span class="mf">0.02</span><span class="p">,</span> <span class="mf">0.10</span><span class="p">),</span>
-    <span class="s2">"Базовый"</span><span class="p">:</span> <span class="p">(</span><span class="n">BASE</span><span class="p">[</span><span class="s2">"growth_before"</span><span class="p">],</span> <span class="n">BASE</span><span class="p">[</span><span class="s2">"growth_after"</span><span class="p">]),</span>
-    <span class="s2">"Оптимистичный"</span><span class="p">:</span> <span class="p">(</span><span class="mf">0.05</span><span class="p">,</span> <span class="mf">0.20</span><span class="p">),</span>
-<span class="p">}</span>
-
-<span class="c1"># Длинный горизонт, чтобы увидеть весь путь сети (сверх условия)</span>
-<span class="n">LONG_MONTHS</span> <span class="o">=</span> <span class="mi">180</span>
-</pre></div>
+<h3 id="1.2.-%D0%A1%D0%BF%D1%80%D0%B0%D0%B2%D0%BE%D1%87%D0%BD%D1%8B%D0%B5-%D0%B4%D0%B0%D0%BD%D0%BD%D1%8B%D0%B5">1.2. Справочные данные<a class="anchor-link" href="#1.2.-%D0%A1%D0%BF%D1%80%D0%B0%D0%B2%D0%BE%D1%87%D0%BD%D1%8B%D0%B5-%D0%B4%D0%B0%D0%BD%D0%BD%D1%8B%D0%B5">¶</a></h3><p>Справочные данные вводятся там, где они нужны: формулы из лекции №3 — в разделах 2.1 и 2.3, темпы роста для
+сценариев — в разделе 2.5.</p>
+<h3 id="1.3.-%D0%94%D0%BE%D0%BF%D0%BE%D0%BB%D0%BD%D0%B8%D1%82%D0%B5%D0%BB%D1%8C%D0%BD%D1%8B%D0%B5-%D1%83%D1%81%D0%BB%D0%BE%D0%B2%D0%B8%D1%8F-(%D0%B4%D0%BE%D0%BF%D1%83%D1%89%D0%B5%D0%BD%D0%B8%D1%8F)">1.3. Дополнительные условия (допущения)<a class="anchor-link" href="#1.3.-%D0%94%D0%BE%D0%BF%D0%BE%D0%BB%D0%BD%D0%B8%D1%82%D0%B5%D0%BB%D1%8C%D0%BD%D1%8B%D0%B5-%D1%83%D1%81%D0%BB%D0%BE%D0%B2%D0%B8%D1%8F-(%D0%B4%D0%BE%D0%BF%D1%83%D1%89%D0%B5%D0%BD%D0%B8%D1%8F)">¶</a></h3><p>В условии есть места, которые можно понять по-разному. Каждое такое место разобрано перед тем расчетом, на который
+оно влияет: допущения Д1–Д2 — в разделе 2.3, Д3–Д4 — в разделе 2.4, Д5–Д6 — в разделе 2.5.</p>
 </div>
 </div>
 </div>
 </div>
-</div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=cell-07">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h3 id="1.3.-%D0%94%D0%BE%D0%BF%D0%BE%D0%BB%D0%BD%D0%B8%D1%82%D0%B5%D0%BB%D1%8C%D0%BD%D1%8B%D0%B5-%D1%83%D1%81%D0%BB%D0%BE%D0%B2%D0%B8%D1%8F-(%D0%B4%D0%BE%D0%BF%D1%83%D1%89%D0%B5%D0%BD%D0%B8%D1%8F)">1.3. Дополнительные условия (допущения)<a class="anchor-link" href="#1.3.-%D0%94%D0%BE%D0%BF%D0%BE%D0%BB%D0%BD%D0%B8%D1%82%D0%B5%D0%BB%D1%8C%D0%BD%D1%8B%D0%B5-%D1%83%D1%81%D0%BB%D0%BE%D0%B2%D0%B8%D1%8F-(%D0%B4%D0%BE%D0%BF%D1%83%D1%89%D0%B5%D0%BD%D0%B8%D1%8F)">¶</a></h3><table>
-<thead>
-<tr>
-<th>№</th>
-<th>Допущение</th>
-<th>Почему так</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>Д1</td>
-<td>Критическая масса считается по формуле из условия: доход ≥ затраты на поддержание + CAC, то есть $ARPU \cdot N \ge F + CAC$ и $N_{крит} = (F + CAC) / ARPU$. CAC здесь — стоимость привлечения одного пользователя</td>
-<td>Так записано в условии. Смысл: месячного дохода хватает на поддержание сети и на привлечение хотя бы одного нового пользователя.</td>
-</tr>
-<tr>
-<td>Д2</td>
-<td>Сеть растет помесячно: $N_t = \min(M;\ N_{t-1} \cdot (1+g))$. Темп $g$ = 3%, пока пользователей меньше критической массы, потом 15%</td>
-<td>Экспоненциальный рост по условию; пользователей не может быть больше населения города</td>
-</tr>
-<tr>
-<td>Д3</td>
-<td>CAC платится за каждого нового пользователя весь срок</td>
-<td>Так записана формула прибыли в условии. Вариант с бесплатным ростом после критической массы — в разделе 2.7</td>
-</tr>
-<tr>
-<td>Д4</td>
-<td>Оттока пользователей нет</td>
-<td>В условии он не задан</td>
-</tr>
-<tr>
-<td>Д5</td>
-<td>Потоки относятся на конец месяца, месяцы 1–36. Затраты на первые 5 000 пользователей уже понесены</td>
-<td>Стандартное упрощение при расчете NPV</td>
-</tr>
-<tr>
-<td>Д6</td>
-<td>Ценность по Мэткалфу в NPV не входит</td>
-<td>Это оценка полезности сети, а не поступление денег. Деньги сеть получает через ARPU</td>
-</tr>
-</tbody>
-</table>
-</div>
-</div>
-</div>
-</div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=cell-08">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=cell-06">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
@@ -8163,7 +8084,7 @@ a.anchor-link {
 </div>
 </div>
 </div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=cell-09">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=cell-07">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
@@ -8173,12 +8094,12 @@ a.anchor-link {
 </div>
 </div>
 </div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs" id="cell-id=cell-10">
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs" id="cell-id=cell-08">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [4]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In [3]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
 <div class="highlight hl-ipython3"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">critical_mass</span><span class="p">(</span><span class="n">p</span><span class="p">):</span>
@@ -8244,22 +8165,38 @@ a.anchor-link {
 </div>
 </div>
 </div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=cell-11">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=cell-09">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h3 id="2.3.-%D0%A7%D0%B0%D1%81%D1%82%D1%8C-1.-%D0%9A%D1%80%D0%B8%D1%82%D0%B8%D1%87%D0%B5%D1%81%D0%BA%D0%B0%D1%8F-%D0%BC%D0%B0%D1%81%D1%81%D0%B0-%D0%B8-%D0%B2%D1%80%D0%B5%D0%BC%D1%8F-%D0%B5%D0%B5-%D0%B4%D0%BE%D1%81%D1%82%D0%B8%D0%B6%D0%B5%D0%BD%D0%B8%D1%8F-(%D0%B7%D0%B0%D0%B4%D0%B0%D0%BD%D0%B8%D1%8F-1%E2%80%932)">2.3. Часть 1. Критическая масса и время ее достижения (задания 1–2)<a class="anchor-link" href="#2.3.-%D0%A7%D0%B0%D1%81%D1%82%D1%8C-1.-%D0%9A%D1%80%D0%B8%D1%82%D0%B8%D1%87%D0%B5%D1%81%D0%BA%D0%B0%D1%8F-%D0%BC%D0%B0%D1%81%D1%81%D0%B0-%D0%B8-%D0%B2%D1%80%D0%B5%D0%BC%D1%8F-%D0%B5%D0%B5-%D0%B4%D0%BE%D1%81%D1%82%D0%B8%D0%B6%D0%B5%D0%BD%D0%B8%D1%8F-(%D0%B7%D0%B0%D0%B4%D0%B0%D0%BD%D0%B8%D1%8F-1%E2%80%932)">¶</a></h3>
+<h3 id="2.3.-%D0%A7%D0%B0%D1%81%D1%82%D1%8C-1.-%D0%9A%D1%80%D0%B8%D1%82%D0%B8%D1%87%D0%B5%D1%81%D0%BA%D0%B0%D1%8F-%D0%BC%D0%B0%D1%81%D1%81%D0%B0-%D0%B8-%D0%B2%D1%80%D0%B5%D0%BC%D1%8F-%D0%B5%D0%B5-%D0%B4%D0%BE%D1%81%D1%82%D0%B8%D0%B6%D0%B5%D0%BD%D0%B8%D1%8F-(%D0%B7%D0%B0%D0%B4%D0%B0%D0%BD%D0%B8%D1%8F-1%E2%80%932)">2.3. Часть 1. Критическая масса и время ее достижения (задания 1–2)<a class="anchor-link" href="#2.3.-%D0%A7%D0%B0%D1%81%D1%82%D1%8C-1.-%D0%9A%D1%80%D0%B8%D1%82%D0%B8%D1%87%D0%B5%D1%81%D0%BA%D0%B0%D1%8F-%D0%BC%D0%B0%D1%81%D1%81%D0%B0-%D0%B8-%D0%B2%D1%80%D0%B5%D0%BC%D1%8F-%D0%B5%D0%B5-%D0%B4%D0%BE%D1%81%D1%82%D0%B8%D0%B6%D0%B5%D0%BD%D0%B8%D1%8F-(%D0%B7%D0%B0%D0%B4%D0%B0%D0%BD%D0%B8%D1%8F-1%E2%80%932)">¶</a></h3><p>Критическую массу считаем по формуле из условия.</p>
+<table>
+<thead>
+<tr>
+<th>№</th>
+<th>Допущение</th>
+<th>Почему так</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Д1</td>
+<td>Критическая масса считается по формуле из условия: доход ≥ затраты на поддержание + CAC, то есть $ARPU \cdot N \ge F + CAC$ и $N_{крит} = (F + CAC) / ARPU$. CAC здесь — стоимость привлечения одного пользователя</td>
+<td>Так записано в условии. Смысл: месячного дохода хватает на поддержание сети и на привлечение хотя бы одного нового пользователя.</td>
+</tr>
+</tbody>
+</table>
 </div>
 </div>
 </div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=cell-12">
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=cell-10">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [5]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In [4]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
 <div class="highlight hl-ipython3"><pre><span></span><span class="c1"># Критическая масса по условию: доход ARPU × N равен затратам на поддержание плюс CAC</span>
@@ -8292,22 +8229,23 @@ a.anchor-link {
 </div>
 </div>
 </div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=cell-13">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=cell-11">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<p>Ниже для сравнения — еще два способа определить критическую массу.</p>
+<p>Ниже для сравнения — еще два способа определить критическую массу. Один из них — определение из лекции №3:
+сеть становится самоподдерживающейся при $V(N) &gt; C(N)$, где $C(N)$ — затраты на поддержание сети.</p>
 </div>
 </div>
 </div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=cell-14">
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=cell-12">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [6]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In [5]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
 <div class="highlight hl-ipython3"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">months_to</span><span class="p">(</span><span class="n">level</span><span class="p">,</span> <span class="n">growth</span><span class="p">):</span>
@@ -8391,7 +8329,7 @@ a.anchor-link {
 </div>
 </div>
 </div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=cell-15">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=cell-13">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
@@ -8405,15 +8343,47 @@ a.anchor-link {
 </div>
 </div>
 </div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=cell-16">
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=cell-14">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<p>Чтобы посчитать время, нужно допущение о том, как растет сеть.</p>
+<table>
+<thead>
+<tr>
+<th>№</th>
+<th>Допущение</th>
+<th>Почему так</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Д2</td>
+<td>Сеть растет помесячно: $N_t = \min(M;\ N_{t-1} \cdot (1+g))$. Темп $g$ = 3%, пока пользователей меньше критической массы, потом 15%</td>
+<td>Экспоненциальный рост по условию; пользователей не может быть больше населения города</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Сверх условия:</strong> длинный горизонт 180 месяцев (15 лет) нужен только чтобы увидеть весь путь сети до критической
+массы. Все показатели проекта считаются за 36 месяцев.</p>
+</div>
+</div>
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=cell-15">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [7]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In [6]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
-<div class="highlight hl-ipython3"><pre><span></span><span class="c1"># Время достижения критической массы: по формуле и по помесячной модели</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="c1"># Длинный горизонт, чтобы увидеть весь путь сети (сверх условия)</span>
+<span class="n">LONG_MONTHS</span> <span class="o">=</span> <span class="mi">180</span>
+
+<span class="c1"># Время достижения критической массы: по формуле и по помесячной модели</span>
 <span class="n">t_exact</span> <span class="o">=</span> <span class="n">months_to</span><span class="p">(</span><span class="n">n_crit</span><span class="p">,</span> <span class="n">BASE</span><span class="p">[</span><span class="s2">"growth_before"</span><span class="p">])</span>
 <span class="n">long_run</span> <span class="o">=</span> <span class="n">simulate</span><span class="p">(</span><span class="n">BASE</span><span class="p">,</span> <span class="n">months</span><span class="o">=</span><span class="n">LONG_MONTHS</span><span class="p">)</span>          <span class="c1"># длинный расчет: весь путь сети</span>
 <span class="n">t_crit</span> <span class="o">=</span> <span class="n">month_reached</span><span class="p">(</span><span class="n">long_run</span><span class="p">,</span> <span class="n">n_crit</span><span class="p">)</span>
@@ -8450,22 +8420,43 @@ a.anchor-link {
 </div>
 </div>
 </div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=cell-17">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=cell-16">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h3 id="2.4.-%D0%A7%D0%B0%D1%81%D1%82%D1%8C-2.-%D0%A6%D0%B5%D0%BD%D0%BD%D0%BE%D1%81%D1%82%D1%8C-%D1%81%D0%B5%D1%82%D0%B8,-%D0%B4%D0%BE%D1%85%D0%BE%D0%B4-%D0%B8-%D0%BF%D1%80%D0%B8%D0%B1%D1%8B%D0%BB%D1%8C-(%D0%B7%D0%B0%D0%B4%D0%B0%D0%BD%D0%B8%D1%8F-3%E2%80%935)">2.4. Часть 2. Ценность сети, доход и прибыль (задания 3–5)<a class="anchor-link" href="#2.4.-%D0%A7%D0%B0%D1%81%D1%82%D1%8C-2.-%D0%A6%D0%B5%D0%BD%D0%BD%D0%BE%D1%81%D1%82%D1%8C-%D1%81%D0%B5%D1%82%D0%B8,-%D0%B4%D0%BE%D1%85%D0%BE%D0%B4-%D0%B8-%D0%BF%D1%80%D0%B8%D0%B1%D1%8B%D0%BB%D1%8C-(%D0%B7%D0%B0%D0%B4%D0%B0%D0%BD%D0%B8%D1%8F-3%E2%80%935)">¶</a></h3>
+<h3 id="2.4.-%D0%A7%D0%B0%D1%81%D1%82%D1%8C-2.-%D0%A6%D0%B5%D0%BD%D0%BD%D0%BE%D1%81%D1%82%D1%8C-%D1%81%D0%B5%D1%82%D0%B8,-%D0%B4%D0%BE%D1%85%D0%BE%D0%B4-%D0%B8-%D0%BF%D1%80%D0%B8%D0%B1%D1%8B%D0%BB%D1%8C-(%D0%B7%D0%B0%D0%B4%D0%B0%D0%BD%D0%B8%D1%8F-3%E2%80%935)">2.4. Часть 2. Ценность сети, доход и прибыль (задания 3–5)<a class="anchor-link" href="#2.4.-%D0%A7%D0%B0%D1%81%D1%82%D1%8C-2.-%D0%A6%D0%B5%D0%BD%D0%BD%D0%BE%D1%81%D1%82%D1%8C-%D1%81%D0%B5%D1%82%D0%B8,-%D0%B4%D0%BE%D1%85%D0%BE%D0%B4-%D0%B8-%D0%BF%D1%80%D0%B8%D0%B1%D1%8B%D0%BB%D1%8C-(%D0%B7%D0%B0%D0%B4%D0%B0%D0%BD%D0%B8%D1%8F-3%E2%80%935)">¶</a></h3><p>Для прибыли нужны два допущения.</p>
+<table>
+<thead>
+<tr>
+<th>№</th>
+<th>Допущение</th>
+<th>Почему так</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Д3</td>
+<td>CAC платится за каждого нового пользователя весь срок</td>
+<td>Так записана формула прибыли в условии. Вариант с бесплатным ростом после критической массы — в разделе 2.7</td>
+</tr>
+<tr>
+<td>Д4</td>
+<td>Оттока пользователей нет</td>
+<td>В условии он не задан</td>
+</tr>
+</tbody>
+</table>
 </div>
 </div>
 </div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=cell-18">
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=cell-17">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [8]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In [7]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
 <div class="highlight hl-ipython3"><pre><span></span><span class="c1"># Показываем 1-й месяц и далее каждый шестой; деньги — в тыс. руб.</span>
@@ -8604,12 +8595,12 @@ a.anchor-link {
 </div>
 </div>
 </div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=cell-19">
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=cell-18">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [9]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In [8]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
 <div class="highlight hl-ipython3"><pre><span></span><span class="c1"># Закон Мэткалфа: как выросла ценность сети за горизонт</span>
@@ -8661,13 +8652,54 @@ a.anchor-link {
 </div>
 </div>
 </div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=cell-20">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=cell-19">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h3 id="2.5.-%D0%A7%D0%B0%D1%81%D1%82%D1%8C-3.-NPV,-%D1%81%D1%86%D0%B5%D0%BD%D0%B0%D1%80%D0%B8%D0%B8-%D1%80%D0%BE%D1%81%D1%82%D0%B0-%D0%B8-%D0%BC%D0%B8%D0%BD%D0%B8%D0%BC%D0%B0%D0%BB%D1%8C%D0%BD%D1%8B%D0%B9-ARPU-(%D0%B7%D0%B0%D0%B4%D0%B0%D0%BD%D0%B8%D1%8F-6%E2%80%938)">2.5. Часть 3. NPV, сценарии роста и минимальный ARPU (задания 6–8)<a class="anchor-link" href="#2.5.-%D0%A7%D0%B0%D1%81%D1%82%D1%8C-3.-NPV,-%D1%81%D1%86%D0%B5%D0%BD%D0%B0%D1%80%D0%B8%D0%B8-%D1%80%D0%BE%D1%81%D1%82%D0%B0-%D0%B8-%D0%BC%D0%B8%D0%BD%D0%B8%D0%BC%D0%B0%D0%BB%D1%8C%D0%BD%D1%8B%D0%B9-ARPU-(%D0%B7%D0%B0%D0%B4%D0%B0%D0%BD%D0%B8%D1%8F-6%E2%80%938)">¶</a></h3>
+<h3 id="2.5.-%D0%A7%D0%B0%D1%81%D1%82%D1%8C-3.-NPV,-%D1%81%D1%86%D0%B5%D0%BD%D0%B0%D1%80%D0%B8%D0%B8-%D1%80%D0%BE%D1%81%D1%82%D0%B0-%D0%B8-%D0%BC%D0%B8%D0%BD%D0%B8%D0%BC%D0%B0%D0%BB%D1%8C%D0%BD%D1%8B%D0%B9-ARPU-(%D0%B7%D0%B0%D0%B4%D0%B0%D0%BD%D0%B8%D1%8F-6%E2%80%938)">2.5. Часть 3. NPV, сценарии роста и минимальный ARPU (задания 6–8)<a class="anchor-link" href="#2.5.-%D0%A7%D0%B0%D1%81%D1%82%D1%8C-3.-NPV,-%D1%81%D1%86%D0%B5%D0%BD%D0%B0%D1%80%D0%B8%D0%B8-%D1%80%D0%BE%D1%81%D1%82%D0%B0-%D0%B8-%D0%BC%D0%B8%D0%BD%D0%B8%D0%BC%D0%B0%D0%BB%D1%8C%D0%BD%D1%8B%D0%B9-ARPU-(%D0%B7%D0%B0%D0%B4%D0%B0%D0%BD%D0%B8%D1%8F-6%E2%80%938)">¶</a></h3><p>Для NPV нужны еще два допущения.</p>
+<table>
+<thead>
+<tr>
+<th>№</th>
+<th>Допущение</th>
+<th>Почему так</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Д5</td>
+<td>Потоки относятся на конец месяца, месяцы 1–36. Затраты на первые 5 000 пользователей уже понесены</td>
+<td>Стандартное упрощение при расчете NPV</td>
+</tr>
+<tr>
+<td>Д6</td>
+<td>Ценность по Мэткалфу в NPV не входит</td>
+<td>Это оценка полезности сети, а не поступление денег. Деньги сеть получает через ARPU</td>
+</tr>
+</tbody>
+</table>
+<p>Темпы роста для пессимистичного и оптимистичного сценариев заданы в задании 7.</p>
+</div>
+</div>
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs" id="cell-id=cell-20">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In [9]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+<div class="cm-editor cm-s-jupyter">
+<div class="highlight hl-ipython3"><pre><span></span><span class="c1"># Сценарии темпов роста из задания 7: (до критической массы, после нее)</span>
+<span class="n">GROWTH_SCENARIOS</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s2">"Пессимистичный"</span><span class="p">:</span> <span class="p">(</span><span class="mf">0.02</span><span class="p">,</span> <span class="mf">0.10</span><span class="p">),</span>
+    <span class="s2">"Базовый"</span><span class="p">:</span> <span class="p">(</span><span class="n">BASE</span><span class="p">[</span><span class="s2">"growth_before"</span><span class="p">],</span> <span class="n">BASE</span><span class="p">[</span><span class="s2">"growth_after"</span><span class="p">]),</span>
+    <span class="s2">"Оптимистичный"</span><span class="p">:</span> <span class="p">(</span><span class="mf">0.05</span><span class="p">,</span> <span class="mf">0.20</span><span class="p">),</span>
+<span class="p">}</span>
+</pre></div>
+</div>
 </div>
 </div>
 </div>

@@ -8157,183 +8157,15 @@ Freemium, подписка, динамическое и персонализир
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h3 id="1.2.-%D0%A1%D0%BF%D1%80%D0%B0%D0%B2%D0%BE%D1%87%D0%BD%D1%8B%D0%B5-%D0%B4%D0%B0%D0%BD%D0%BD%D1%8B%D0%B5">1.2. Справочные данные<a class="anchor-link" href="#1.2.-%D0%A1%D0%BF%D1%80%D0%B0%D0%B2%D0%BE%D1%87%D0%BD%D1%8B%D0%B5-%D0%B4%D0%B0%D0%BD%D0%BD%D1%8B%D0%B5">¶</a></h3><p><strong>Формулы из условия и лекции №4:</strong></p>
-<ul>
-<li>ARPU = Цена × Конверсия (критерии оценки задачи; в лекции — раздел 2.2: $ARPU = r \cdot P_{premium}$);</li>
-<li>LTV = ARPU / Churn (условие; лекция, раздел 3.2);</li>
-<li>средний срок жизни клиента = 1 / Churn (условие);</li>
-<li>условие устойчивости бизнеса: LTV / CAC ≥ 3 (лекция, раздел 3.2);</li>
-<li>NPV подписки: $\sum (MRR_t - CAC_t - C_{операционные,t}) / (1+r)^t$ (лекция, раздел 3.4).</li>
-</ul>
-<p><strong>Целевые значения метрик из лекции (раздел 3.4)</strong> и <strong>матрица выбора стратегии (раздел 7.1)</strong> записаны в ячейке
-ниже. Они нужны для заданий 3, 7, 8 и 9.</p>
-</div>
-</div>
-</div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=cell-06">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [3]:</div>
-<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
-<div class="cm-editor cm-s-jupyter">
-<div class="highlight hl-ipython3"><pre><span></span><span class="c1"># Целевые значения метрик из лекции №4 (разделы 3.2 и 3.4)</span>
-<span class="n">TARGET_LTV_CAC</span> <span class="o">=</span> <span class="mi">3</span>          <span class="c1"># условие устойчивости: LTV / CAC не ниже 3</span>
-<span class="n">TARGET_CHURN</span> <span class="o">=</span> <span class="mf">0.05</span>         <span class="c1"># Churn для B2B: ниже 5% в месяц</span>
-<span class="n">TARGET_PAYBACK</span> <span class="o">=</span> <span class="mi">12</span>         <span class="c1"># окупаемость CAC: быстрее 12 месяцев</span>
-
-<span class="c1"># Матрица выбора стратегии из лекции №4 (раздел 7.1): качественные оценки</span>
-<span class="n">LECTURE_MATRIX</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span>
-    <span class="p">{</span>
-        <span class="s2">"Freemium"</span><span class="p">:</span> <span class="p">(</span><span class="s2">"Средняя"</span><span class="p">,</span> <span class="s2">"Высокие"</span><span class="p">,</span> <span class="s2">"Низкий"</span><span class="p">,</span> <span class="s2">"Массовых продуктов"</span><span class="p">),</span>
-        <span class="s2">"Подписка"</span><span class="p">:</span> <span class="p">(</span><span class="s2">"Низкая"</span><span class="p">,</span> <span class="s2">"Низкие"</span><span class="p">,</span> <span class="s2">"Низкий"</span><span class="p">,</span> <span class="s2">"B2B, сервисы"</span><span class="p">),</span>
-        <span class="s2">"Динамическая"</span><span class="p">:</span> <span class="p">(</span><span class="s2">"Высокая"</span><span class="p">,</span> <span class="s2">"Высокие"</span><span class="p">,</span> <span class="s2">"Средний"</span><span class="p">,</span> <span class="s2">"Транспорт, отели"</span><span class="p">),</span>
-        <span class="s2">"Персонализированная"</span><span class="p">:</span> <span class="p">(</span><span class="s2">"Очень высокая"</span><span class="p">,</span> <span class="s2">"Очень высокие"</span><span class="p">,</span> <span class="s2">"Высокий"</span><span class="p">,</span> <span class="s2">"E-commerce"</span><span class="p">),</span>
-    <span class="p">},</span>
-    <span class="n">index</span><span class="o">=</span><span class="p">[</span><span class="s2">"Сложность внедрения"</span><span class="p">,</span> <span class="s2">"Затраты на внедрение"</span><span class="p">,</span> <span class="s2">"Риск пользователей"</span><span class="p">,</span> <span class="s2">"Подходит для"</span><span class="p">],</span>
-<span class="p">)</span><span class="o">.</span><span class="n">T</span>
-<span class="n">display</span><span class="p">(</span><span class="n">LECTURE_MATRIX</span><span class="p">)</span>
-</pre></div>
+<h3 id="1.2.-%D0%A1%D0%BF%D1%80%D0%B0%D0%B2%D0%BE%D1%87%D0%BD%D1%8B%D0%B5-%D0%B4%D0%B0%D0%BD%D0%BD%D1%8B%D0%B5">1.2. Справочные данные<a class="anchor-link" href="#1.2.-%D0%A1%D0%BF%D1%80%D0%B0%D0%B2%D0%BE%D1%87%D0%BD%D1%8B%D0%B5-%D0%B4%D0%B0%D0%BD%D0%BD%D1%8B%D0%B5">¶</a></h3><p>Справочные данные вводятся там, где они нужны: формулы из условия и лекции №4 — в разделе 2.1, порог LTV/CAC —
+в разделе 2.3, матрица выбора стратегии и целевые значения метрик из лекции — в разделе 2.6.</p>
+<h3 id="1.3.-%D0%94%D0%BE%D0%BF%D0%BE%D0%BB%D0%BD%D0%B8%D1%82%D0%B5%D0%BB%D1%8C%D0%BD%D1%8B%D0%B5-%D1%83%D1%81%D0%BB%D0%BE%D0%B2%D0%B8%D1%8F-(%D0%B4%D0%BE%D0%BF%D1%83%D1%89%D0%B5%D0%BD%D0%B8%D1%8F)">1.3. Дополнительные условия (допущения)<a class="anchor-link" href="#1.3.-%D0%94%D0%BE%D0%BF%D0%BE%D0%BB%D0%BD%D0%B8%D1%82%D0%B5%D0%BB%D1%8C%D0%BD%D1%8B%D0%B5-%D1%83%D1%81%D0%BB%D0%BE%D0%B2%D0%B8%D1%8F-(%D0%B4%D0%BE%D0%BF%D1%83%D1%89%D0%B5%D0%BD%D0%B8%D1%8F)">¶</a></h3><p>В условии есть места, которые можно понять по-разному. Каждое такое место разобрано перед тем расчетом, на который
+оно влияет: допущения Д1–Д3 — в разделе 2.3, Д4–Д8 — в разделе 2.4, Д9 — в разделе 2.5.</p>
 </div>
 </div>
 </div>
 </div>
-<div class="jp-Cell-outputWrapper">
-<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
-</div>
-<div class="jp-OutputArea jp-Cell-outputArea">
-<div class="jp-OutputArea-child">
-<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
-<div class="jp-RenderedHTMLCommon jp-RenderedHTML jp-OutputArea-output" data-mime-type="text/html" tabindex="0">
-<div>
-<style scoped="">
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
-
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
-</style>
-<table border="1" class="dataframe">
-<thead>
-<tr style="text-align: right;">
-<th></th>
-<th>Сложность внедрения</th>
-<th>Затраты на внедрение</th>
-<th>Риск пользователей</th>
-<th>Подходит для</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<th>Freemium</th>
-<td>Средняя</td>
-<td>Высокие</td>
-<td>Низкий</td>
-<td>Массовых продуктов</td>
-</tr>
-<tr>
-<th>Подписка</th>
-<td>Низкая</td>
-<td>Низкие</td>
-<td>Низкий</td>
-<td>B2B, сервисы</td>
-</tr>
-<tr>
-<th>Динамическая</th>
-<td>Высокая</td>
-<td>Высокие</td>
-<td>Средний</td>
-<td>Транспорт, отели</td>
-</tr>
-<tr>
-<th>Персонализированная</th>
-<td>Очень высокая</td>
-<td>Очень высокие</td>
-<td>Высокий</td>
-<td>E-commerce</td>
-</tr>
-</tbody>
-</table>
-</div>
-</div>
-</div>
-</div>
-</div>
-</div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=cell-07">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h3 id="1.3.-%D0%94%D0%BE%D0%BF%D0%BE%D0%BB%D0%BD%D0%B8%D1%82%D0%B5%D0%BB%D1%8C%D0%BD%D1%8B%D0%B5-%D1%83%D1%81%D0%BB%D0%BE%D0%B2%D0%B8%D1%8F-(%D0%B4%D0%BE%D0%BF%D1%83%D1%89%D0%B5%D0%BD%D0%B8%D1%8F)">1.3. Дополнительные условия (допущения)<a class="anchor-link" href="#1.3.-%D0%94%D0%BE%D0%BF%D0%BE%D0%BB%D0%BD%D0%B8%D1%82%D0%B5%D0%BB%D1%8C%D0%BD%D1%8B%D0%B5-%D1%83%D1%81%D0%BB%D0%BE%D0%B2%D0%B8%D1%8F-(%D0%B4%D0%BE%D0%BF%D1%83%D1%89%D0%B5%D0%BD%D0%B8%D1%8F)">¶</a></h3><table>
-<thead>
-<tr>
-<th>№</th>
-<th>Допущение</th>
-<th>Почему так</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>Д1</td>
-<td>Для стратегий с диапазоном цен берется середина диапазона: 1 250 руб. для динамической и 2 650 руб. для персонализированной</td>
-<td>В условии задан только диапазон. Как цены распределены внутри него, не сказано</td>
-</tr>
-<tr>
-<td>Д2</td>
-<td>ARPU = Цена × Конверсия и считается на одного пользователя базы, включая тех, кто не платит</td>
-<td>Так записано в критериях оценки и в лекции (раздел 2.2)</td>
-</tr>
-<tr>
-<td>Д3</td>
-<td>Churn — отток за месяц</td>
-<td>Цены и ARPU заданы за месяц; в лекции (раздел 3.2) Churn — месячный отток. Тогда LTV = ARPU / Churn получается в рублях</td>
-</tr>
-<tr>
-<td>Д4</td>
-<td>Число пользователей по годам задано моделью роста из условия: 1 000 → 2 000 → 3 000 → 3 600. Оно одинаково для всех стратегий</td>
-<td>Так записано в задании 4. Отток влияет на LTV, а в прибыль отдельно не входит: модель роста уже дает итоговую базу</td>
-</tr>
-<tr>
-<td>Д5</td>
-<td>Прибыль года = доход − затраты на привлечение − затраты на поддержание. Доход года = ARPU × база года × 12</td>
-<td>Формула NPV подписки из лекции (раздел 3.4). База года — число пользователей после прироста этого года</td>
-</tr>
-<tr>
-<td>Д6</td>
-<td>В прибыли и NPV используется средний CAC по трем каналам: 800 руб. Привлечение первых 1 000 пользователей уже оплачено</td>
-<td>Доли каналов в условии не заданы, считаем их равными. По каждому каналу отдельно посчитано LTV/CAC (задание 3)</td>
-</tr>
-<tr>
-<td>Д7</td>
-<td>Затраты на разработку (15 млн руб.) относятся на год 0. Потоки годов 1–3 относятся на конец года</td>
-<td>Стандартное упрощение при расчете NPV</td>
-</tr>
-<tr>
-<td>Д8</td>
-<td>Размер рынка, темп его роста и цены конкурентов в формулы не входят</td>
-<td>Модель роста в задании 4 задана от базы пользователей, а не от рынка. Эти данные используются в анализе</td>
-</tr>
-<tr>
-<td>Д9</td>
-<td>В анализе чувствительности параметры меняются по одному, остальные остаются базовыми. Показатели: LTV/CAC при среднем CAC и NPV</td>
-<td>В задании 6 параметры перечислены по отдельности</td>
-</tr>
-</tbody>
-</table>
-</div>
-</div>
-</div>
-</div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=cell-08">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=cell-06">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
@@ -8349,6 +8181,9 @@ Freemium, подписка, динамическое и персонализир
 <p><strong>Прибыль года:</strong></p>
 <p>$$П_t = ARPU \cdot N_t \cdot 12 - CAC \cdot (N_t - N_{t-1}) - C_{поддержание} \cdot 12$$</p>
 <p><strong>NPV:</strong> $NPV = -I_0 + \sum_{t=1}^{3} \dfrac{П_t}{(1+r)^t}$, где $I_0$ — затраты на разработку, $r$ = 12% годовых.</p>
+<p><strong>Откуда формулы.</strong> ARPU = Цена × Конверсия — критерии оценки задачи и лекция №4, раздел 2.2. LTV = ARPU / Churn
+и срок жизни 1 / Churn — условие и раздел 3.2. Порог LTV / CAC ≥ 3 — раздел 3.2. Прибыль и NPV — формула NPV
+подписки из раздела 3.4.</p>
 <p><strong>Почему эти методы.</strong> ARPU, LTV и LTV/CAC — основные метрики ценовых стратегий из лекции №4: они показывают,
 сколько приносит пользователь и окупается ли его привлечение. NPV нужен, чтобы сравнить стратегии по деньгам
 за 3 года с учетом стоимости денег во времени.</p>
@@ -8356,7 +8191,7 @@ Freemium, подписка, динамическое и персонализир
 </div>
 </div>
 </div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=cell-09">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=cell-07">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
@@ -8366,16 +8201,16 @@ Freemium, подписка, динамическое и персонализир
 </div>
 </div>
 </div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs" id="cell-id=cell-10">
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs" id="cell-id=cell-08">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [4]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In [3]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
 <div class="highlight hl-ipython3"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">price_of</span><span class="p">(</span><span class="n">strategy</span><span class="p">):</span>
-<span class="w">    </span><span class="sd">"""Цена стратегии; для диапазона цен — середина (допущение Д1)."""</span>
+<span class="w">    </span><span class="sd">"""Цена стратегии; для диапазона цен — середина диапазона."""</span>
     <span class="n">low</span><span class="p">,</span> <span class="n">high</span> <span class="o">=</span> <span class="n">strategy</span><span class="p">[</span><span class="s2">"price"</span><span class="p">]</span>
     <span class="k">return</span> <span class="p">(</span><span class="n">low</span> <span class="o">+</span> <span class="n">high</span><span class="p">)</span> <span class="o">/</span> <span class="mi">2</span>
 
@@ -8427,22 +8262,48 @@ Freemium, подписка, динамическое и персонализир
 </div>
 </div>
 </div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=cell-11">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=cell-09">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h3 id="2.3.-%D0%A7%D0%B0%D1%81%D1%82%D1%8C-1.-ARPU,-LTV-%D0%B8-LTV/CAC-(%D0%B7%D0%B0%D0%B4%D0%B0%D0%BD%D0%B8%D1%8F-1%E2%80%933)">2.3. Часть 1. ARPU, LTV и LTV/CAC (задания 1–3)<a class="anchor-link" href="#2.3.-%D0%A7%D0%B0%D1%81%D1%82%D1%8C-1.-ARPU,-LTV-%D0%B8-LTV/CAC-(%D0%B7%D0%B0%D0%B4%D0%B0%D0%BD%D0%B8%D1%8F-1%E2%80%933)">¶</a></h3>
+<h3 id="2.3.-%D0%A7%D0%B0%D1%81%D1%82%D1%8C-1.-ARPU,-LTV-%D0%B8-LTV/CAC-(%D0%B7%D0%B0%D0%B4%D0%B0%D0%BD%D0%B8%D1%8F-1%E2%80%933)">2.3. Часть 1. ARPU, LTV и LTV/CAC (задания 1–3)<a class="anchor-link" href="#2.3.-%D0%A7%D0%B0%D1%81%D1%82%D1%8C-1.-ARPU,-LTV-%D0%B8-LTV/CAC-(%D0%B7%D0%B0%D0%B4%D0%B0%D0%BD%D0%B8%D1%8F-1%E2%80%933)">¶</a></h3><p>Для этих расчетов нужны три допущения.</p>
+<table>
+<thead>
+<tr>
+<th>№</th>
+<th>Допущение</th>
+<th>Почему так</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Д1</td>
+<td>Для стратегий с диапазоном цен берется середина диапазона: 1 250 руб. для динамической и 2 650 руб. для персонализированной</td>
+<td>В условии задан только диапазон. Как цены распределены внутри него, не сказано</td>
+</tr>
+<tr>
+<td>Д2</td>
+<td>ARPU = Цена × Конверсия и считается на одного пользователя базы, включая тех, кто не платит</td>
+<td>Так записано в критериях оценки и в лекции (раздел 2.2)</td>
+</tr>
+<tr>
+<td>Д3</td>
+<td>Churn — отток за месяц</td>
+<td>Цены и ARPU заданы за месяц; в лекции (раздел 3.2) Churn — месячный отток. Тогда LTV = ARPU / Churn получается в рублях</td>
+</tr>
+</tbody>
+</table>
 </div>
 </div>
 </div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=cell-12">
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=cell-10">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [5]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In [4]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
 <div class="highlight hl-ipython3"><pre><span></span><span class="c1"># Задания 1–2. ARPU, срок жизни клиента и LTV для каждой стратегии</span>
@@ -8540,16 +8401,17 @@ Freemium, подписка, динамическое и персонализир
 </div>
 </div>
 </div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=cell-13">
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=cell-11">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [6]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In [5]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
 <div class="highlight hl-ipython3"><pre><span></span><span class="c1"># Задание 3. LTV/CAC для каждой стратегии и каждого канала привлечения</span>
-<span class="n">CAC_AVG</span> <span class="o">=</span> <span class="nb">sum</span><span class="p">(</span><span class="n">BASE</span><span class="p">[</span><span class="s2">"cac"</span><span class="p">]</span><span class="o">.</span><span class="n">values</span><span class="p">())</span> <span class="o">/</span> <span class="nb">len</span><span class="p">(</span><span class="n">BASE</span><span class="p">[</span><span class="s2">"cac"</span><span class="p">])</span>     <span class="c1"># средний CAC (допущение Д6)</span>
+<span class="n">TARGET_LTV_CAC</span> <span class="o">=</span> <span class="mi">3</span>          <span class="c1"># условие устойчивости из лекции №4 (раздел 3.2): LTV / CAC ≥ 3</span>
+<span class="n">CAC_AVG</span> <span class="o">=</span> <span class="nb">sum</span><span class="p">(</span><span class="n">BASE</span><span class="p">[</span><span class="s2">"cac"</span><span class="p">]</span><span class="o">.</span><span class="n">values</span><span class="p">())</span> <span class="o">/</span> <span class="nb">len</span><span class="p">(</span><span class="n">BASE</span><span class="p">[</span><span class="s2">"cac"</span><span class="p">])</span>     <span class="c1"># средний CAC по трем каналам</span>
 <span class="n">channels</span> <span class="o">=</span> <span class="p">{</span><span class="o">**</span><span class="n">BASE</span><span class="p">[</span><span class="s2">"cac"</span><span class="p">],</span> <span class="s2">"Средний CAC"</span><span class="p">:</span> <span class="n">CAC_AVG</span><span class="p">}</span>
 
 <span class="n">ratio</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span>
@@ -8648,22 +8510,58 @@ Freemium, подписка, динамическое и персонализир
 </div>
 </div>
 </div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=cell-14">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=cell-12">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h3 id="2.4.-%D0%A7%D0%B0%D1%81%D1%82%D1%8C-2.-%D0%9F%D1%80%D0%B8%D0%B1%D1%8B%D0%BB%D1%8C-%D0%B7%D0%B0-3-%D0%B3%D0%BE%D0%B4%D0%B0-%D0%B8-NPV-(%D0%B7%D0%B0%D0%B4%D0%B0%D0%BD%D0%B8%D1%8F-4%E2%80%935)">2.4. Часть 2. Прибыль за 3 года и NPV (задания 4–5)<a class="anchor-link" href="#2.4.-%D0%A7%D0%B0%D1%81%D1%82%D1%8C-2.-%D0%9F%D1%80%D0%B8%D0%B1%D1%8B%D0%BB%D1%8C-%D0%B7%D0%B0-3-%D0%B3%D0%BE%D0%B4%D0%B0-%D0%B8-NPV-(%D0%B7%D0%B0%D0%B4%D0%B0%D0%BD%D0%B8%D1%8F-4%E2%80%935)">¶</a></h3>
+<h3 id="2.4.-%D0%A7%D0%B0%D1%81%D1%82%D1%8C-2.-%D0%9F%D1%80%D0%B8%D0%B1%D1%8B%D0%BB%D1%8C-%D0%B7%D0%B0-3-%D0%B3%D0%BE%D0%B4%D0%B0-%D0%B8-NPV-(%D0%B7%D0%B0%D0%B4%D0%B0%D0%BD%D0%B8%D1%8F-4%E2%80%935)">2.4. Часть 2. Прибыль за 3 года и NPV (задания 4–5)<a class="anchor-link" href="#2.4.-%D0%A7%D0%B0%D1%81%D1%82%D1%8C-2.-%D0%9F%D1%80%D0%B8%D0%B1%D1%8B%D0%BB%D1%8C-%D0%B7%D0%B0-3-%D0%B3%D0%BE%D0%B4%D0%B0-%D0%B8-NPV-(%D0%B7%D0%B0%D0%B4%D0%B0%D0%BD%D0%B8%D1%8F-4%E2%80%935)">¶</a></h3><p>Для прибыли и NPV нужны пять допущений.</p>
+<table>
+<thead>
+<tr>
+<th>№</th>
+<th>Допущение</th>
+<th>Почему так</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Д4</td>
+<td>Число пользователей по годам задано моделью роста из условия: 1 000 → 2 000 → 3 000 → 3 600. Оно одинаково для всех стратегий</td>
+<td>Так записано в задании 4. Отток влияет на LTV, а в прибыль отдельно не входит: модель роста уже дает итоговую базу</td>
+</tr>
+<tr>
+<td>Д5</td>
+<td>Прибыль года = доход − затраты на привлечение − затраты на поддержание. Доход года = ARPU × база года × 12</td>
+<td>Формула NPV подписки из лекции (раздел 3.4). База года — число пользователей после прироста этого года</td>
+</tr>
+<tr>
+<td>Д6</td>
+<td>В прибыли и NPV используется средний CAC по трем каналам: 800 руб. Привлечение первых 1 000 пользователей уже оплачено</td>
+<td>Доли каналов в условии не заданы, считаем их равными. По каждому каналу отдельно посчитано LTV/CAC (задание 3)</td>
+</tr>
+<tr>
+<td>Д7</td>
+<td>Затраты на разработку (15 млн руб.) относятся на год 0. Потоки годов 1–3 относятся на конец года</td>
+<td>Стандартное упрощение при расчете NPV</td>
+</tr>
+<tr>
+<td>Д8</td>
+<td>Размер рынка, темп его роста и цены конкурентов в формулы не входят</td>
+<td>Модель роста в задании 4 задана от базы пользователей, а не от рынка. Эти данные используются в анализе</td>
+</tr>
+</tbody>
+</table>
 </div>
 </div>
 </div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=cell-15">
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=cell-13">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [7]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In [6]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
 <div class="highlight hl-ipython3"><pre><span></span><span class="c1"># Задание 4. База пользователей и затраты по годам — они одинаковы для всех стратегий</span>
@@ -8768,12 +8666,12 @@ Freemium, подписка, динамическое и персонализир
 </div>
 </div>
 </div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=cell-16">
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=cell-14">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [8]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In [7]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
 <div class="highlight hl-ipython3"><pre><span></span><span class="c1"># Задание 4. Доход и прибыль по годам для каждой стратегии, млн руб.</span>
@@ -8942,12 +8840,12 @@ Freemium, подписка, динамическое и персонализир
 </div>
 </div>
 </div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=cell-17">
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=cell-15">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [9]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In [8]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
 <div class="highlight hl-ipython3"><pre><span></span><span class="c1"># Задание 5. NPV: прибыль каждого года умножаем на коэффициент дисконтирования</span>
@@ -9058,22 +8956,38 @@ Freemium, подписка, динамическое и персонализир
 </div>
 </div>
 </div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=cell-18">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=cell-16">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
 <h3 id="2.5.-%D0%A7%D0%B0%D1%81%D1%82%D1%8C-3.-%D0%90%D0%BD%D0%B0%D0%BB%D0%B8%D0%B7-%D1%87%D1%83%D0%B2%D1%81%D1%82%D0%B2%D0%B8%D1%82%D0%B5%D0%BB%D1%8C%D0%BD%D0%BE%D1%81%D1%82%D0%B8-(%D0%B7%D0%B0%D0%B4%D0%B0%D0%BD%D0%B8%D1%8F-6%E2%80%937)">2.5. Часть 3. Анализ чувствительности (задания 6–7)<a class="anchor-link" href="#2.5.-%D0%A7%D0%B0%D1%81%D1%82%D1%8C-3.-%D0%90%D0%BD%D0%B0%D0%BB%D0%B8%D0%B7-%D1%87%D1%83%D0%B2%D1%81%D1%82%D0%B2%D0%B8%D1%82%D0%B5%D0%BB%D1%8C%D0%BD%D0%BE%D1%81%D1%82%D0%B8-(%D0%B7%D0%B0%D0%B4%D0%B0%D0%BD%D0%B8%D1%8F-6%E2%80%937)">¶</a></h3><p>Меняем по одному параметру на ±30% и смотрим, как меняются LTV/CAC и NPV.</p>
+<table>
+<thead>
+<tr>
+<th>№</th>
+<th>Допущение</th>
+<th>Почему так</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Д9</td>
+<td>В анализе чувствительности параметры меняются по одному, остальные остаются базовыми. Показатели: LTV/CAC при среднем CAC и NPV</td>
+<td>В задании 6 параметры перечислены по отдельности</td>
+</tr>
+</tbody>
+</table>
 </div>
 </div>
 </div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=cell-19">
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=cell-17">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [10]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In [9]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
 <div class="highlight hl-ipython3"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">variant</span><span class="p">(</span><span class="n">strategy</span><span class="p">,</span> <span class="n">cac</span><span class="p">,</span> <span class="n">parameter</span><span class="p">,</span> <span class="n">factor</span><span class="p">):</span>
@@ -9295,12 +9209,12 @@ Freemium, подписка, динамическое и персонализир
 </div>
 </div>
 </div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=cell-20">
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=cell-18">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [11]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In [10]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
 <div class="highlight hl-ipython3"><pre><span></span><span class="c1"># Задание 7. Устойчивость: что происходит с показателями в худшем и лучшем варианте</span>
@@ -9418,7 +9332,7 @@ Freemium, подписка, динамическое и персонализир
 </div>
 </div>
 </div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=cell-21">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=cell-19">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
@@ -9428,7 +9342,98 @@ Freemium, подписка, динамическое и персонализир
 </div>
 </div>
 </div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=cell-22">
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=cell-20">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In [11]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+<div class="cm-editor cm-s-jupyter">
+<div class="highlight hl-ipython3"><pre><span></span><span class="c1"># Матрица выбора стратегии из лекции №4 (раздел 7.1): качественные оценки</span>
+<span class="n">LECTURE_MATRIX</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span>
+    <span class="p">{</span>
+        <span class="s2">"Freemium"</span><span class="p">:</span> <span class="p">(</span><span class="s2">"Средняя"</span><span class="p">,</span> <span class="s2">"Высокие"</span><span class="p">,</span> <span class="s2">"Низкий"</span><span class="p">,</span> <span class="s2">"Массовых продуктов"</span><span class="p">),</span>
+        <span class="s2">"Подписка"</span><span class="p">:</span> <span class="p">(</span><span class="s2">"Низкая"</span><span class="p">,</span> <span class="s2">"Низкие"</span><span class="p">,</span> <span class="s2">"Низкий"</span><span class="p">,</span> <span class="s2">"B2B, сервисы"</span><span class="p">),</span>
+        <span class="s2">"Динамическая"</span><span class="p">:</span> <span class="p">(</span><span class="s2">"Высокая"</span><span class="p">,</span> <span class="s2">"Высокие"</span><span class="p">,</span> <span class="s2">"Средний"</span><span class="p">,</span> <span class="s2">"Транспорт, отели"</span><span class="p">),</span>
+        <span class="s2">"Персонализированная"</span><span class="p">:</span> <span class="p">(</span><span class="s2">"Очень высокая"</span><span class="p">,</span> <span class="s2">"Очень высокие"</span><span class="p">,</span> <span class="s2">"Высокий"</span><span class="p">,</span> <span class="s2">"E-commerce"</span><span class="p">),</span>
+    <span class="p">},</span>
+    <span class="n">index</span><span class="o">=</span><span class="p">[</span><span class="s2">"Сложность внедрения"</span><span class="p">,</span> <span class="s2">"Затраты на внедрение"</span><span class="p">,</span> <span class="s2">"Риск пользователей"</span><span class="p">,</span> <span class="s2">"Подходит для"</span><span class="p">],</span>
+<span class="p">)</span><span class="o">.</span><span class="n">T</span>
+<span class="n">display</span><span class="p">(</span><span class="n">LECTURE_MATRIX</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell-outputWrapper">
+<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
+</div>
+<div class="jp-OutputArea jp-Cell-outputArea">
+<div class="jp-OutputArea-child">
+<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+<div class="jp-RenderedHTMLCommon jp-RenderedHTML jp-OutputArea-output" data-mime-type="text/html" tabindex="0">
+<div>
+<style scoped="">
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+<thead>
+<tr style="text-align: right;">
+<th></th>
+<th>Сложность внедрения</th>
+<th>Затраты на внедрение</th>
+<th>Риск пользователей</th>
+<th>Подходит для</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<th>Freemium</th>
+<td>Средняя</td>
+<td>Высокие</td>
+<td>Низкий</td>
+<td>Массовых продуктов</td>
+</tr>
+<tr>
+<th>Подписка</th>
+<td>Низкая</td>
+<td>Низкие</td>
+<td>Низкий</td>
+<td>B2B, сервисы</td>
+</tr>
+<tr>
+<th>Динамическая</th>
+<td>Высокая</td>
+<td>Высокие</td>
+<td>Средний</td>
+<td>Транспорт, отели</td>
+</tr>
+<tr>
+<th>Персонализированная</th>
+<td>Очень высокая</td>
+<td>Очень высокие</td>
+<td>Высокий</td>
+<td>E-commerce</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=cell-21">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
@@ -9564,7 +9569,7 @@ Freemium, подписка, динамическое и персонализир
 </div>
 </div>
 </div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=cell-23">
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=cell-22">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
@@ -9572,7 +9577,11 @@ Freemium, подписка, динамическое и персонализир
 <div class="jp-InputPrompt jp-InputArea-prompt">In [13]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
-<div class="highlight hl-ipython3"><pre><span></span><span class="c1"># Задание 9. Ключевые метрики выбранной стратегии: значение по расчету и цель из лекции</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="c1"># Целевые значения метрик из лекции №4 (раздел 3.4)</span>
+<span class="n">TARGET_CHURN</span> <span class="o">=</span> <span class="mf">0.05</span>         <span class="c1"># Churn для B2B: ниже 5% в месяц</span>
+<span class="n">TARGET_PAYBACK</span> <span class="o">=</span> <span class="mi">12</span>         <span class="c1"># окупаемость CAC: быстрее 12 месяцев</span>
+
+<span class="c1"># Задание 9. Ключевые метрики выбранной стратегии: значение по расчету и цель из лекции</span>
 <span class="n">chosen</span> <span class="o">=</span> <span class="n">STRATEGIES</span><span class="p">[</span><span class="n">CHOICE</span><span class="p">]</span>
 <span class="n">users</span> <span class="o">=</span> <span class="n">users_by_year</span><span class="p">()</span>
 <span class="n">mrr</span> <span class="o">=</span> <span class="p">[</span><span class="n">arpu_of</span><span class="p">(</span><span class="n">chosen</span><span class="p">)</span> <span class="o">*</span> <span class="n">n</span> <span class="o">/</span> <span class="n">MLN</span> <span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="n">users</span><span class="p">[</span><span class="mi">1</span><span class="p">:]]</span>              <span class="c1"># MRR по годам, млн руб.</span>
@@ -9673,7 +9682,7 @@ Freemium, подписка, динамическое и персонализир
 </div>
 </div>
 </div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=cell-24">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=cell-23">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
@@ -9683,7 +9692,7 @@ Freemium, подписка, динамическое и персонализир
 </div>
 </div>
 </div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=cell-25">
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=cell-24">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
@@ -9729,7 +9738,7 @@ Freemium, подписка, динамическое и персонализир
 </div>
 </div>
 </div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=cell-26">
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=cell-25">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
@@ -9772,7 +9781,7 @@ Freemium, подписка, динамическое и персонализир
 </div>
 </div>
 </div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=cell-27">
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=cell-26">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
@@ -9814,7 +9823,7 @@ Freemium, подписка, динамическое и персонализир
 </div>
 </div>
 </div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=cell-28">
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=cell-27">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
@@ -9856,7 +9865,7 @@ Freemium, подписка, динамическое и персонализир
 </div>
 </div>
 </div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=cell-29">
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=cell-28">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
@@ -9903,7 +9912,7 @@ Freemium, подписка, динамическое и персонализир
 </div>
 </div>
 </div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=cell-30">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=cell-29">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
@@ -9949,7 +9958,7 @@ Freemium — −71,10. Из этих сумм 15 млн руб. — затрат
 </div>
 </div>
 </div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=cell-31">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=cell-30">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
