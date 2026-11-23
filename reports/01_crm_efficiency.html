@@ -8056,91 +8056,15 @@ a.anchor-link {
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h3 id="1.2.-%D0%A1%D0%BF%D1%80%D0%B0%D0%B2%D0%BE%D1%87%D0%BD%D1%8B%D0%B5-%D0%B4%D0%B0%D0%BD%D0%BD%D1%8B%D0%B5">1.2. Справочные данные<a class="anchor-link" href="#1.2.-%D0%A1%D0%BF%D1%80%D0%B0%D0%B2%D0%BE%D1%87%D0%BD%D1%8B%D0%B5-%D0%B4%D0%B0%D0%BD%D0%BD%D1%8B%D0%B5">¶</a></h3><p>Формулы показателей взяты из лекции №1 (п. 6.4 «Методы оценки эффективности ИТ»): ROI = (Выгода − Затраты) / Затраты,
-NPV — сумма дисконтированных денежных потоков.</p>
-<p>Для проверки устойчивости результата нужны три значения, <strong>которых нет в условии</strong>. Они условные и используются только
-в разделе 2.6, базовый расчет от них не зависит.</p>
-</div>
-</div>
-</div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs" id="cell-id=cell-06">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [3]:</div>
-<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
-<div class="cm-editor cm-s-jupyter">
-<div class="highlight hl-ipython3"><pre><span></span><span class="c1"># Условные значения для проверки устойчивости (сверх условия задачи)</span>
-<span class="n">EXTRA</span> <span class="o">=</span> <span class="p">{</span>
-    <span class="s2">"margin"</span><span class="p">:</span> <span class="mf">0.20</span><span class="p">,</span>            <span class="c1"># доля доп. выручки, которая становится прибылью</span>
-    <span class="s2">"time_to_money"</span><span class="p">:</span> <span class="mf">0.50</span><span class="p">,</span>     <span class="c1"># доля сэкономленного времени, которая стала деньгами</span>
-    <span class="s2">"first_year_share"</span><span class="p">:</span> <span class="mf">0.50</span><span class="p">,</span>  <span class="c1"># доля эффекта, полученная в 1-й год (пока идет освоение)</span>
-<span class="p">}</span>
-</pre></div>
+<h3 id="1.2.-%D0%A1%D0%BF%D1%80%D0%B0%D0%B2%D0%BE%D1%87%D0%BD%D1%8B%D0%B5-%D0%B4%D0%B0%D0%BD%D0%BD%D1%8B%D0%B5">1.2. Справочные данные<a class="anchor-link" href="#1.2.-%D0%A1%D0%BF%D1%80%D0%B0%D0%B2%D0%BE%D1%87%D0%BD%D1%8B%D0%B5-%D0%B4%D0%B0%D0%BD%D0%BD%D1%8B%D0%B5">¶</a></h3><p>Справочные данные вводятся там, где они нужны: формулы NPV и ROI из лекции №1 — в разделе 2.1, условные значения
+для проверки устойчивости — в разделе 2.6.</p>
+<h3 id="1.3.-%D0%94%D0%BE%D0%BF%D0%BE%D0%BB%D0%BD%D0%B8%D1%82%D0%B5%D0%BB%D1%8C%D0%BD%D1%8B%D0%B5-%D1%83%D1%81%D0%BB%D0%BE%D0%B2%D0%B8%D1%8F-(%D0%B4%D0%BE%D0%BF%D1%83%D1%89%D0%B5%D0%BD%D0%B8%D1%8F)">1.3. Дополнительные условия (допущения)<a class="anchor-link" href="#1.3.-%D0%94%D0%BE%D0%BF%D0%BE%D0%BB%D0%BD%D0%B8%D1%82%D0%B5%D0%BB%D1%8C%D0%BD%D1%8B%D0%B5-%D1%83%D1%81%D0%BB%D0%BE%D0%B2%D0%B8%D1%8F-(%D0%B4%D0%BE%D0%BF%D1%83%D1%89%D0%B5%D0%BD%D0%B8%D1%8F)">¶</a></h3><p>В условии есть места, которые можно понять по-разному. Каждое такое место разобрано перед тем расчетом, на который
+оно влияет: допущения Д1–Д4 — в разделе 2.3, Д5–Д6 — в разделе 2.4, Д7 — в разделе 2.5.</p>
 </div>
 </div>
 </div>
 </div>
-</div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=cell-07">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h3 id="1.3.-%D0%94%D0%BE%D0%BF%D0%BE%D0%BB%D0%BD%D0%B8%D1%82%D0%B5%D0%BB%D1%8C%D0%BD%D1%8B%D0%B5-%D1%83%D1%81%D0%BB%D0%BE%D0%B2%D0%B8%D1%8F-(%D0%B4%D0%BE%D0%BF%D1%83%D1%89%D0%B5%D0%BD%D0%B8%D1%8F)">1.3. Дополнительные условия (допущения)<a class="anchor-link" href="#1.3.-%D0%94%D0%BE%D0%BF%D0%BE%D0%BB%D0%BD%D0%B8%D1%82%D0%B5%D0%BB%D1%8C%D0%BD%D1%8B%D0%B5-%D1%83%D1%81%D0%BB%D0%BE%D0%B2%D0%B8%D1%8F-(%D0%B4%D0%BE%D0%BF%D1%83%D1%89%D0%B5%D0%BD%D0%B8%D1%8F)">¶</a></h3><p>В условии есть места, которые можно понять по-разному. Здесь записано, как они поняты в расчете и почему.</p>
-<table>
-<thead>
-<tr>
-<th>№</th>
-<th>Допущение</th>
-<th>Почему так</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>Д1</td>
-<td>CRM экономит 20% именно <strong>рутинного</strong> времени. Рутина занимает 30% дня, значит освобождается 30% × 20% = 6% рабочего времени</td>
-<td>В условии сказано: «экономия времени на рутинных операциях»</td>
-</tr>
-<tr>
-<td>Д2</td>
-<td>Освобожденное время оцениваем по зарплате, без страховых взносов</td>
-<td>Ставка взносов в условии не задана</td>
-</tr>
-<tr>
-<td>Д3</td>
-<td>Рост продаж 8% — это прибавка к обороту «без CRM» в каждом году, то есть +5,76 млн руб. ежегодно</td>
-<td>Осторожное прочтение. Вариант, где рост накапливается, показан в разделе 2.3</td>
-</tr>
-<tr>
-<td>Д4</td>
-<td>Весь дополнительный доход от продаж идет в прибыль до налога</td>
-<td>Задание просит считать «дополнительный доход», а маржа в условии не задана. Вариант с маржой 20% — в разделе 2.6</td>
-</tr>
-<tr>
-<td>Д5</td>
-<td>Потери адаптации равны месячному фонду оплаты труда отдела (1,8 млн руб.) и относятся к 1-му году. Эффект от CRM при этом считаем за все 12 месяцев</td>
-<td>В условии говорится о потере <strong>времени</strong> на 1 месяц, а время мы оцениваем по зарплате (как в Д2). Вариант «потерян месячный оборот» — в разделе 2.6</td>
-</tr>
-<tr>
-<td>Д6</td>
-<td>Капитальных затрат нет, лицензии оплачиваются в начале каждого года</td>
-<td>Облачная модель (SaaS): подписка вместо покупки</td>
-</tr>
-<tr>
-<td>Д7</td>
-<td>В NPV потоки относятся на конец года; налог берется только с положительного прироста прибыли</td>
-<td>Стандартное упрощение при расчете NPV</td>
-</tr>
-</tbody>
-</table>
-</div>
-</div>
-</div>
-</div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=cell-08">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=cell-06">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
@@ -8156,7 +8080,8 @@ $d$ — доля рутины, $e$ — экономия рутинного вр�
 ($c$ — цена лицензии, $t$ — месяцы адаптации).</p>
 <p><strong>Прирост чистой прибыли в году $t$</strong> ($T$ — ставка налога на прибыль):</p>
 <p>$$\Delta П_t = (E_{ФОТ} + E_{прод} - C_{лиц} - C_{адапт,t}) \cdot (1 - T)$$</p>
-<p><strong>Показатели эффективности</strong> ($r$ — ставка дисконтирования):</p>
+<p><strong>Показатели эффективности</strong> — формулы из лекции №1, п. 6.4 «Методы оценки эффективности ИТ»
+($r$ — ставка дисконтирования):</p>
 <p>$$NPV = \sum_{t=1}^{3} \frac{\Delta П_t}{(1+r)^t}, \qquad ROI = \frac{Выгоды - Затраты}{Затраты}$$</p>
 <p>Простой срок окупаемости — месяц, в котором накопленная чистая прибыль проекта впервые становится неотрицательной.</p>
 <p><strong>Почему эти методы.</strong> NPV учитывает, что деньги будущих лет стоят меньше сегодняшних, поэтому это главный критерий для
@@ -8166,7 +8091,7 @@ $d$ — доля рутины, $e$ — экономия рутинного вр�
 </div>
 </div>
 </div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=cell-09">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=cell-07">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
@@ -8176,12 +8101,12 @@ $d$ — доля рутины, $e$ — экономия рутинного вр�
 </div>
 </div>
 </div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs" id="cell-id=cell-10">
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs" id="cell-id=cell-08">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [4]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In [3]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
 <div class="highlight hl-ipython3"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">evaluate_crm</span><span class="p">(</span><span class="n">p</span><span class="p">,</span> <span class="n">margin</span><span class="o">=</span><span class="mf">1.0</span><span class="p">,</span> <span class="n">time_to_money</span><span class="o">=</span><span class="mf">1.0</span><span class="p">,</span> <span class="n">first_year_share</span><span class="o">=</span><span class="mf">1.0</span><span class="p">,</span>
@@ -8248,22 +8173,53 @@ $d$ — доля рутины, $e$ — экономия рутинного вр�
 </div>
 </div>
 </div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=cell-11">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=cell-09">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h3 id="2.3.-%D0%9F%D1%80%D1%8F%D0%BC%D0%BE%D0%B9-%D1%8D%D1%84%D1%84%D0%B5%D0%BA%D1%82-%D0%BE%D1%82-%D0%B2%D0%BD%D0%B5%D0%B4%D1%80%D0%B5%D0%BD%D0%B8%D1%8F-CRM-(%D0%B7%D0%B0%D0%B4%D0%B0%D0%BD%D0%B8%D0%B5-1)">2.3. Прямой эффект от внедрения CRM (задание 1)<a class="anchor-link" href="#2.3.-%D0%9F%D1%80%D1%8F%D0%BC%D0%BE%D0%B9-%D1%8D%D1%84%D1%84%D0%B5%D0%BA%D1%82-%D0%BE%D1%82-%D0%B2%D0%BD%D0%B5%D0%B4%D1%80%D0%B5%D0%BD%D0%B8%D1%8F-CRM-(%D0%B7%D0%B0%D0%B4%D0%B0%D0%BD%D0%B8%D0%B5-1)">¶</a></h3>
+<h3 id="2.3.-%D0%9F%D1%80%D1%8F%D0%BC%D0%BE%D0%B9-%D1%8D%D1%84%D1%84%D0%B5%D0%BA%D1%82-%D0%BE%D1%82-%D0%B2%D0%BD%D0%B5%D0%B4%D1%80%D0%B5%D0%BD%D0%B8%D1%8F-CRM-(%D0%B7%D0%B0%D0%B4%D0%B0%D0%BD%D0%B8%D0%B5-1)">2.3. Прямой эффект от внедрения CRM (задание 1)<a class="anchor-link" href="#2.3.-%D0%9F%D1%80%D1%8F%D0%BC%D0%BE%D0%B9-%D1%8D%D1%84%D1%84%D0%B5%D0%BA%D1%82-%D0%BE%D1%82-%D0%B2%D0%BD%D0%B5%D0%B4%D1%80%D0%B5%D0%BD%D0%B8%D1%8F-CRM-(%D0%B7%D0%B0%D0%B4%D0%B0%D0%BD%D0%B8%D0%B5-1)">¶</a></h3><p>Чтобы посчитать эффект, нужно решить, как понимать четыре места условия.</p>
+<table>
+<thead>
+<tr>
+<th>№</th>
+<th>Допущение</th>
+<th>Почему так</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Д1</td>
+<td>CRM экономит 20% именно <strong>рутинного</strong> времени. Рутина занимает 30% дня, значит освобождается 30% × 20% = 6% рабочего времени</td>
+<td>В условии сказано: «экономия времени на рутинных операциях»</td>
+</tr>
+<tr>
+<td>Д2</td>
+<td>Освобожденное время оцениваем по зарплате, без страховых взносов</td>
+<td>Ставка взносов в условии не задана</td>
+</tr>
+<tr>
+<td>Д3</td>
+<td>Рост продаж 8% — это прибавка к обороту «без CRM» в каждом году, то есть +5,76 млн руб. ежегодно</td>
+<td>Осторожное прочтение. Вариант, где рост накапливается, показан в конце расчета ниже</td>
+</tr>
+<tr>
+<td>Д4</td>
+<td>Весь дополнительный доход от продаж идет в прибыль до налога</td>
+<td>Задание просит считать «дополнительный доход», а маржа в условии не задана. Вариант с маржой 20% — в разделе 2.6</td>
+</tr>
+</tbody>
+</table>
 </div>
 </div>
 </div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=cell-12">
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=cell-10">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [5]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In [4]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
 <div class="highlight hl-ipython3"><pre><span></span><span class="c1"># Экономия на зарплате — стоимость рабочего времени, которое освободила CRM</span>
@@ -8321,22 +8277,43 @@ $d$ — доля рутины, $e$ — экономия рутинного вр�
 </div>
 </div>
 </div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=cell-13">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=cell-11">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h3 id="2.4.-%D0%97%D0%B0%D1%82%D1%80%D0%B0%D1%82%D1%8B-%D0%BD%D0%B0-%D0%B2%D0%BD%D0%B5%D0%B4%D1%80%D0%B5%D0%BD%D0%B8%D0%B5-(%D0%B7%D0%B0%D0%B4%D0%B0%D0%BD%D0%B8%D0%B5-2)">2.4. Затраты на внедрение (задание 2)<a class="anchor-link" href="#2.4.-%D0%97%D0%B0%D1%82%D1%80%D0%B0%D1%82%D1%8B-%D0%BD%D0%B0-%D0%B2%D0%BD%D0%B5%D0%B4%D1%80%D0%B5%D0%BD%D0%B8%D0%B5-(%D0%B7%D0%B0%D0%B4%D0%B0%D0%BD%D0%B8%D0%B5-2)">¶</a></h3>
+<h3 id="2.4.-%D0%97%D0%B0%D1%82%D1%80%D0%B0%D1%82%D1%8B-%D0%BD%D0%B0-%D0%B2%D0%BD%D0%B5%D0%B4%D1%80%D0%B5%D0%BD%D0%B8%D0%B5-(%D0%B7%D0%B0%D0%B4%D0%B0%D0%BD%D0%B8%D0%B5-2)">2.4. Затраты на внедрение (задание 2)<a class="anchor-link" href="#2.4.-%D0%97%D0%B0%D1%82%D1%80%D0%B0%D1%82%D1%8B-%D0%BD%D0%B0-%D0%B2%D0%BD%D0%B5%D0%B4%D1%80%D0%B5%D0%BD%D0%B8%D0%B5-(%D0%B7%D0%B0%D0%B4%D0%B0%D0%BD%D0%B8%D0%B5-2)">¶</a></h3><p>Для затрат нужны еще два допущения.</p>
+<table>
+<thead>
+<tr>
+<th>№</th>
+<th>Допущение</th>
+<th>Почему так</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Д5</td>
+<td>Потери адаптации равны месячному фонду оплаты труда отдела (1,8 млн руб.) и относятся к 1-му году. Эффект от CRM при этом считаем за все 12 месяцев</td>
+<td>В условии говорится о потере <strong>времени</strong> на 1 месяц, а время мы оцениваем по зарплате (как в Д2). Вариант «потерян месячный оборот» — в разделе 2.6</td>
+</tr>
+<tr>
+<td>Д6</td>
+<td>Капитальных затрат нет, лицензии оплачиваются в начале каждого года</td>
+<td>Облачная модель (SaaS): подписка вместо покупки</td>
+</tr>
+</tbody>
+</table>
 </div>
 </div>
 </div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=cell-14">
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=cell-12">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [6]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In [5]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
 <div class="highlight hl-ipython3"><pre><span></span><span class="c1"># Лицензии: платим за каждого менеджера каждый год</span>
@@ -8375,22 +8352,38 @@ $d$ — доля рутины, $e$ — экономия рутинного вр�
 </div>
 </div>
 </div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=cell-15">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=cell-13">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h3 id="2.5.-%D0%A4%D0%B8%D0%BD%D0%B0%D0%BD%D1%81%D0%BE%D0%B2%D1%8B%D0%B5-%D0%BF%D0%BE%D0%BA%D0%B0%D0%B7%D0%B0%D1%82%D0%B5%D0%BB%D0%B8-%D1%8D%D1%84%D1%84%D0%B5%D0%BA%D1%82%D0%B8%D0%B2%D0%BD%D0%BE%D1%81%D1%82%D0%B8-(%D0%B7%D0%B0%D0%B4%D0%B0%D0%BD%D0%B8%D0%B5-3)">2.5. Финансовые показатели эффективности (задание 3)<a class="anchor-link" href="#2.5.-%D0%A4%D0%B8%D0%BD%D0%B0%D0%BD%D1%81%D0%BE%D0%B2%D1%8B%D0%B5-%D0%BF%D0%BE%D0%BA%D0%B0%D0%B7%D0%B0%D1%82%D0%B5%D0%BB%D0%B8-%D1%8D%D1%84%D1%84%D0%B5%D0%BA%D1%82%D0%B8%D0%B2%D0%BD%D0%BE%D1%81%D1%82%D0%B8-(%D0%B7%D0%B0%D0%B4%D0%B0%D0%BD%D0%B8%D0%B5-3)">¶</a></h3>
+<h3 id="2.5.-%D0%A4%D0%B8%D0%BD%D0%B0%D0%BD%D1%81%D0%BE%D0%B2%D1%8B%D0%B5-%D0%BF%D0%BE%D0%BA%D0%B0%D0%B7%D0%B0%D1%82%D0%B5%D0%BB%D0%B8-%D1%8D%D1%84%D1%84%D0%B5%D0%BA%D1%82%D0%B8%D0%B2%D0%BD%D0%BE%D1%81%D1%82%D0%B8-(%D0%B7%D0%B0%D0%B4%D0%B0%D0%BD%D0%B8%D0%B5-3)">2.5. Финансовые показатели эффективности (задание 3)<a class="anchor-link" href="#2.5.-%D0%A4%D0%B8%D0%BD%D0%B0%D0%BD%D1%81%D0%BE%D0%B2%D1%8B%D0%B5-%D0%BF%D0%BE%D0%BA%D0%B0%D0%B7%D0%B0%D1%82%D0%B5%D0%BB%D0%B8-%D1%8D%D1%84%D1%84%D0%B5%D0%BA%D1%82%D0%B8%D0%B2%D0%BD%D0%BE%D1%81%D1%82%D0%B8-(%D0%B7%D0%B0%D0%B4%D0%B0%D0%BD%D0%B8%D0%B5-3)">¶</a></h3><p>Для NPV и налога нужно последнее допущение.</p>
+<table>
+<thead>
+<tr>
+<th>№</th>
+<th>Допущение</th>
+<th>Почему так</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Д7</td>
+<td>В NPV потоки относятся на конец года; налог берется только с положительного прироста прибыли</td>
+<td>Стандартное упрощение при расчете NPV</td>
+</tr>
+</tbody>
+</table>
 </div>
 </div>
 </div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=cell-16">
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=cell-14">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [7]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In [6]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
 <div class="highlight hl-ipython3"><pre><span></span><span class="c1"># Денежные потоки по годам, млн руб. Затраты записаны со знаком минус</span>
@@ -8520,12 +8513,12 @@ $d$ — доля рутины, $e$ — экономия рутинного вр�
 </div>
 </div>
 </div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=cell-17">
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=cell-15">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [8]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In [7]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
 <div class="highlight hl-ipython3"><pre><span></span><span class="c1"># Прирост чистой прибыли по годам и NPV</span>
@@ -8561,12 +8554,12 @@ ROI по чистой прибыли (после налога): 508%
 </div>
 </div>
 </div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=cell-18">
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=cell-16">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [9]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In [8]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
 <div class="highlight hl-ipython3"><pre><span></span><span class="c1"># Простой срок окупаемости: копим чистую прибыль по месяцам, пока не выйдем в плюс.</span>
@@ -8623,7 +8616,7 @@ ROI по чистой прибыли (после налога): 508%
 </div>
 </div>
 </div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=cell-19">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=cell-17">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
@@ -8635,17 +8628,38 @@ ROI по чистой прибыли (после налога): 508%
 </div>
 </div>
 </div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=cell-20">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=cell-18">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
 <h3 id="2.6.-%D0%9F%D1%80%D0%BE%D0%B2%D0%B5%D1%80%D0%BA%D0%B0-%D1%83%D1%81%D1%82%D0%BE%D0%B9%D1%87%D0%B8%D0%B2%D0%BE%D1%81%D1%82%D0%B8-%D1%80%D0%B5%D0%B7%D1%83%D0%BB%D1%8C%D1%82%D0%B0%D1%82%D0%B0-(%D1%81%D0%B2%D0%B5%D1%80%D1%85-%D1%83%D1%81%D0%BB%D0%BE%D0%B2%D0%B8%D1%8F-%D0%B7%D0%B0%D0%B4%D0%B0%D1%87%D0%B8)">2.6. Проверка устойчивости результата (сверх условия задачи)<a class="anchor-link" href="#2.6.-%D0%9F%D1%80%D0%BE%D0%B2%D0%B5%D1%80%D0%BA%D0%B0-%D1%83%D1%81%D1%82%D0%BE%D0%B9%D1%87%D0%B8%D0%B2%D0%BE%D1%81%D1%82%D0%B8-%D1%80%D0%B5%D0%B7%D1%83%D0%BB%D1%8C%D1%82%D0%B0%D1%82%D0%B0-(%D1%81%D0%B2%D0%B5%D1%80%D1%85-%D1%83%D1%81%D0%BB%D0%BE%D0%B2%D0%B8%D1%8F-%D0%B7%D0%B0%D0%B4%D0%B0%D1%87%D0%B8)">¶</a></h3><p>Базовый расчет опирается на допущения Д3–Д5. Проверяем, сохранится ли вывод, если они не выполнятся.</p>
+<p>Для проверки нужны три значения, <strong>которых нет в условии</strong>. Они условные и используются только в этом разделе,
+базовый расчет от них не зависит.</p>
 </div>
 </div>
 </div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=cell-21">
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs" id="cell-id=cell-19">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In [9]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+<div class="cm-editor cm-s-jupyter">
+<div class="highlight hl-ipython3"><pre><span></span><span class="c1"># Условные значения для проверки устойчивости (сверх условия задачи)</span>
+<span class="n">EXTRA</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s2">"margin"</span><span class="p">:</span> <span class="mf">0.20</span><span class="p">,</span>            <span class="c1"># доля доп. выручки, которая становится прибылью</span>
+    <span class="s2">"time_to_money"</span><span class="p">:</span> <span class="mf">0.50</span><span class="p">,</span>     <span class="c1"># доля сэкономленного времени, которая стала деньгами</span>
+    <span class="s2">"first_year_share"</span><span class="p">:</span> <span class="mf">0.50</span><span class="p">,</span>  <span class="c1"># доля эффекта, полученная в 1-й год (пока идет освоение)</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=cell-20">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
@@ -8742,7 +8756,7 @@ ROI по чистой прибыли (после налога): 508%
 </div>
 </div>
 </div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=cell-22">
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=cell-21">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
@@ -8775,7 +8789,7 @@ ROI по чистой прибыли (после налога): 508%
 </div>
 </div>
 </div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=cell-23">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=cell-22">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
@@ -8785,7 +8799,7 @@ ROI по чистой прибыли (после налога): 508%
 </div>
 </div>
 </div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=cell-24">
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=cell-23">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
@@ -8835,7 +8849,7 @@ ROI по чистой прибыли (после налога): 508%
 </div>
 </div>
 </div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=cell-25">
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=cell-24">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
@@ -8879,7 +8893,7 @@ ROI по чистой прибыли (после налога): 508%
 </div>
 </div>
 </div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=cell-26">
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=cell-25">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
@@ -8920,7 +8934,7 @@ ROI по чистой прибыли (после налога): 508%
 </div>
 </div>
 </div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=cell-27">
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=cell-26">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
@@ -8960,7 +8974,7 @@ ROI по чистой прибыли (после налога): 508%
 </div>
 </div>
 </div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=cell-28">
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=cell-27">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
@@ -9006,7 +9020,7 @@ ROI по чистой прибыли (после налога): 508%
 </div>
 </div>
 </div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=cell-29">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=cell-28">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
@@ -9071,7 +9085,7 @@ ROI по чистой прибыли (после налога): 508%
 </div>
 </div>
 </div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=cell-30">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=cell-29">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
