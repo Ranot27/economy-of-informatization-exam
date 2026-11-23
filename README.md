@@ -11,7 +11,7 @@
 ## Структура репозитория
 
 - `notebooks/` — Jupyter Notebook с решениями задач
-- `data/` — исходные данные для задач (в задачах 1–3 данные заданы в условии и записаны прямо в ноутбуках)
+- `data/` — исходные данные для задач (в задачах 1–4 данные заданы в условии и записаны прямо в ноутбуках)
 - `reports/` — экспортированные отчеты (HTML и PDF), графики (`figures/`) и итоговые показатели (`*_summary.json`)
 
 ## Установка и запуск
@@ -42,6 +42,7 @@ jupyter nbconvert --to html --output-dir reports notebooks/01_crm_efficiency.ipy
 | 1 | 1 | Оценка экономической эффективности внедрения облачной CRM | [01_crm_efficiency.ipynb](notebooks/01_crm_efficiency.ipynb) | [HTML](reports/01_crm_efficiency.html), [PDF](reports/01_crm_efficiency.pdf) | Выполнено | — |
 | 2 | 3 | Расчет критической массы и ценности социальной сети | [02_network_critical_mass.ipynb](notebooks/02_network_critical_mass.ipynb) | [HTML](reports/02_network_critical_mass.html), [PDF](reports/02_network_critical_mass.pdf) | Выполнено | — |
 | 3 | 4 | Выбор ценовой стратегии для AI-сервиса по созданию контента | [03_ai_pricing_strategy.ipynb](notebooks/03_ai_pricing_strategy.ipynb) | [HTML](reports/03_ai_pricing_strategy.html), [PDF](reports/03_ai_pricing_strategy.pdf) | Выполнено | — |
+| 4 | 5 | Оптимизация рекламной нагрузки для платформы видеоконтента | [04_ad_load_optimization.ipynb](notebooks/04_ad_load_optimization.ipynb) | [HTML](reports/04_ad_load_optimization.html), [PDF](reports/04_ad_load_optimization.pdf) | Выполнено | — |
 
 ## Ключевые результаты
 
@@ -50,3 +51,4 @@ jupyter nbconvert --to html --output-dir reports notebooks/01_crm_efficiency.ipy
 | 1. CRM | NPV = 11,58 млн руб., ROI = 635% (508% по чистой прибыли), окупаемость на 4-м месяце |
 | 2. Соцсеть | Критическая масса 133 367 пользователей, достигается на 112-м месяце; NPV за 36 мес. = −60,10 млн руб. |
 | 3. Ценовая стратегия | Выбрана подписка: ARPU 300 руб., LTV 6 000 руб., LTV/CAC от 4,0 до 60; NPV за 3 года = −50,07 млн руб. (все четыре стратегии убыточны при заданной базе) |
+| 4. Рекламная нагрузка | Оптимальная нагрузка — 10 показов в день на пользователя, прибыль 1 530 млн руб.; ответ не меняется при CPM 10–30 руб. и при изменении оттока на ±20% |
