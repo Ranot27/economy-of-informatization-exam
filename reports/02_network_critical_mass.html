@@ -8459,15 +8459,14 @@ a.anchor-link {
 <div class="jp-InputPrompt jp-InputArea-prompt">In [7]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
-<div class="highlight hl-ipython3"><pre><span></span><span class="c1"># Показываем 1-й месяц и далее каждый шестой; деньги — в тыс. руб.</span>
-<span class="n">show_months</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">+</span> <span class="nb">list</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="mi">6</span><span class="p">,</span> <span class="n">BASE</span><span class="p">[</span><span class="s2">"months"</span><span class="p">]</span> <span class="o">+</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">6</span><span class="p">))</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="c1"># Расчет для каждого месяца горизонта (задания 3–5); деньги — в рублях</span>
 <span class="n">money</span> <span class="o">=</span> <span class="p">[</span><span class="s2">"Ценность"</span><span class="p">,</span> <span class="s2">"Доход"</span><span class="p">,</span> <span class="s2">"Поддержание"</span><span class="p">,</span> <span class="s2">"Привлечение"</span><span class="p">,</span> <span class="s2">"Прибыль"</span><span class="p">]</span>
-<span class="n">view</span> <span class="o">=</span> <span class="n">base_run</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">show_months</span><span class="p">,</span> <span class="p">[</span><span class="s2">"Пользователи"</span><span class="p">,</span> <span class="s2">"Новые"</span><span class="p">]</span> <span class="o">+</span> <span class="n">money</span><span class="p">]</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
-<span class="n">view</span><span class="p">[</span><span class="n">money</span><span class="p">]</span> <span class="o">=</span> <span class="n">view</span><span class="p">[</span><span class="n">money</span><span class="p">]</span> <span class="o">/</span> <span class="mi">1000</span>
-<span class="n">view</span><span class="o">.</span><span class="n">columns</span> <span class="o">=</span> <span class="p">[</span><span class="s2">"Пользователи"</span><span class="p">,</span> <span class="s2">"Новые"</span><span class="p">]</span> <span class="o">+</span> <span class="p">[</span><span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="n">name</span><span class="si">}</span><span class="s2">, тыс. руб."</span> <span class="k">for</span> <span class="n">name</span> <span class="ow">in</span> <span class="n">money</span><span class="p">]</span>
+<span class="n">view</span> <span class="o">=</span> <span class="n">base_run</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="mi">1</span><span class="p">:,</span> <span class="p">[</span><span class="s2">"Пользователи"</span><span class="p">,</span> <span class="s2">"Новые"</span><span class="p">]</span> <span class="o">+</span> <span class="n">money</span><span class="p">]</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+<span class="n">view</span><span class="o">.</span><span class="n">columns</span> <span class="o">=</span> <span class="p">[</span><span class="s2">"Пользователи"</span><span class="p">,</span> <span class="s2">"Новые"</span><span class="p">]</span> <span class="o">+</span> <span class="p">[</span><span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="n">name</span><span class="si">}</span><span class="s2">, руб."</span> <span class="k">for</span> <span class="n">name</span> <span class="ow">in</span> <span class="n">money</span><span class="p">]</span>
 
-<span class="c1"># Округляем до целых и записываем числа с пробелами между разрядами</span>
-<span class="n">display</span><span class="p">(</span><span class="n">view</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="k">lambda</span> <span class="n">column</span><span class="p">:</span> <span class="n">column</span><span class="o">.</span><span class="n">map</span><span class="p">(</span><span class="n">fmt</span><span class="p">)))</span>
+<span class="c1"># Округляем до целых, пишем числа с пробелами между разрядами и показываем таблицу целиком</span>
+<span class="k">with</span> <span class="n">pd</span><span class="o">.</span><span class="n">option_context</span><span class="p">(</span><span class="s2">"display.max_rows"</span><span class="p">,</span> <span class="kc">None</span><span class="p">):</span>
+    <span class="n">display</span><span class="p">(</span><span class="n">view</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="k">lambda</span> <span class="n">column</span><span class="p">:</span> <span class="n">column</span><span class="o">.</span><span class="n">map</span><span class="p">(</span><span class="n">fmt</span><span class="p">)))</span>
 </pre></div>
 </div>
 </div>
@@ -8500,11 +8499,11 @@ a.anchor-link {
 <th></th>
 <th>Пользователи</th>
 <th>Новые</th>
-<th>Ценность, тыс. руб.</th>
-<th>Доход, тыс. руб.</th>
-<th>Поддержание, тыс. руб.</th>
-<th>Привлечение, тыс. руб.</th>
-<th>Прибыль, тыс. руб.</th>
+<th>Ценность, руб.</th>
+<th>Доход, руб.</th>
+<th>Поддержание, руб.</th>
+<th>Привлечение, руб.</th>
+<th>Прибыль, руб.</th>
 </tr>
 <tr>
 <th>Месяц</th>
@@ -8522,71 +8521,361 @@ a.anchor-link {
 <th>1</th>
 <td>5 150</td>
 <td>150</td>
-<td>133</td>
-<td>77</td>
-<td>2 000</td>
-<td>75</td>
-<td>−1 998</td>
+<td>132 612</td>
+<td>77 250</td>
+<td>2 000 000</td>
+<td>75 000</td>
+<td>−1 997 750</td>
+</tr>
+<tr>
+<th>2</th>
+<td>5 304</td>
+<td>154</td>
+<td>140 689</td>
+<td>79 568</td>
+<td>2 000 000</td>
+<td>77 250</td>
+<td>−1 997 682</td>
+</tr>
+<tr>
+<th>3</th>
+<td>5 464</td>
+<td>159</td>
+<td>149 257</td>
+<td>81 955</td>
+<td>2 000 000</td>
+<td>79 568</td>
+<td>−1 997 613</td>
+</tr>
+<tr>
+<th>4</th>
+<td>5 628</td>
+<td>164</td>
+<td>158 346</td>
+<td>84 413</td>
+<td>2 000 000</td>
+<td>81 955</td>
+<td>−1 997 541</td>
+</tr>
+<tr>
+<th>5</th>
+<td>5 796</td>
+<td>169</td>
+<td>167 990</td>
+<td>86 946</td>
+<td>2 000 000</td>
+<td>84 413</td>
+<td>−1 997 468</td>
 </tr>
 <tr>
 <th>6</th>
 <td>5 970</td>
 <td>174</td>
-<td>178</td>
-<td>90</td>
-<td>2 000</td>
-<td>87</td>
-<td>−1 997</td>
+<td>178 220</td>
+<td>89 554</td>
+<td>2 000 000</td>
+<td>86 946</td>
+<td>−1 997 392</td>
+</tr>
+<tr>
+<th>7</th>
+<td>6 149</td>
+<td>179</td>
+<td>189 074</td>
+<td>92 241</td>
+<td>2 000 000</td>
+<td>89 554</td>
+<td>−1 997 313</td>
+</tr>
+<tr>
+<th>8</th>
+<td>6 334</td>
+<td>184</td>
+<td>200 588</td>
+<td>95 008</td>
+<td>2 000 000</td>
+<td>92 241</td>
+<td>−1 997 233</td>
+</tr>
+<tr>
+<th>9</th>
+<td>6 524</td>
+<td>190</td>
+<td>212 804</td>
+<td>97 858</td>
+<td>2 000 000</td>
+<td>95 008</td>
+<td>−1 997 150</td>
+</tr>
+<tr>
+<th>10</th>
+<td>6 720</td>
+<td>196</td>
+<td>225 764</td>
+<td>100 794</td>
+<td>2 000 000</td>
+<td>97 858</td>
+<td>−1 997 064</td>
+</tr>
+<tr>
+<th>11</th>
+<td>6 921</td>
+<td>202</td>
+<td>239 513</td>
+<td>103 818</td>
+<td>2 000 000</td>
+<td>100 794</td>
+<td>−1 996 976</td>
 </tr>
 <tr>
 <th>12</th>
 <td>7 129</td>
 <td>208</td>
-<td>254</td>
-<td>107</td>
-<td>2 000</td>
-<td>104</td>
-<td>−1 997</td>
+<td>254 099</td>
+<td>106 932</td>
+<td>2 000 000</td>
+<td>103 818</td>
+<td>−1 996 885</td>
+</tr>
+<tr>
+<th>13</th>
+<td>7 343</td>
+<td>214</td>
+<td>269 574</td>
+<td>110 140</td>
+<td>2 000 000</td>
+<td>106 932</td>
+<td>−1 996 792</td>
+</tr>
+<tr>
+<th>14</th>
+<td>7 563</td>
+<td>220</td>
+<td>285 991</td>
+<td>113 444</td>
+<td>2 000 000</td>
+<td>110 140</td>
+<td>−1 996 696</td>
+</tr>
+<tr>
+<th>15</th>
+<td>7 790</td>
+<td>227</td>
+<td>303 408</td>
+<td>116 848</td>
+<td>2 000 000</td>
+<td>113 444</td>
+<td>−1 996 597</td>
+</tr>
+<tr>
+<th>16</th>
+<td>8 024</td>
+<td>234</td>
+<td>321 885</td>
+<td>120 353</td>
+<td>2 000 000</td>
+<td>116 848</td>
+<td>−1 996 495</td>
+</tr>
+<tr>
+<th>17</th>
+<td>8 264</td>
+<td>241</td>
+<td>341 488</td>
+<td>123 964</td>
+<td>2 000 000</td>
+<td>120 353</td>
+<td>−1 996 389</td>
 </tr>
 <tr>
 <th>18</th>
 <td>8 512</td>
 <td>248</td>
-<td>362</td>
-<td>128</td>
-<td>2 000</td>
-<td>124</td>
-<td>−1 996</td>
+<td>362 285</td>
+<td>127 682</td>
+<td>2 000 000</td>
+<td>123 964</td>
+<td>−1 996 281</td>
+</tr>
+<tr>
+<th>19</th>
+<td>8 768</td>
+<td>255</td>
+<td>384 348</td>
+<td>131 513</td>
+<td>2 000 000</td>
+<td>127 682</td>
+<td>−1 996 170</td>
+</tr>
+<tr>
+<th>20</th>
+<td>9 031</td>
+<td>263</td>
+<td>407 755</td>
+<td>135 458</td>
+<td>2 000 000</td>
+<td>131 513</td>
+<td>−1 996 055</td>
+</tr>
+<tr>
+<th>21</th>
+<td>9 301</td>
+<td>271</td>
+<td>432 587</td>
+<td>139 522</td>
+<td>2 000 000</td>
+<td>135 458</td>
+<td>−1 995 936</td>
+</tr>
+<tr>
+<th>22</th>
+<td>9 581</td>
+<td>279</td>
+<td>458 932</td>
+<td>143 708</td>
+<td>2 000 000</td>
+<td>139 522</td>
+<td>−1 995 814</td>
+</tr>
+<tr>
+<th>23</th>
+<td>9 868</td>
+<td>287</td>
+<td>486 880</td>
+<td>148 019</td>
+<td>2 000 000</td>
+<td>143 708</td>
+<td>−1 995 689</td>
 </tr>
 <tr>
 <th>24</th>
 <td>10 164</td>
 <td>296</td>
-<td>517</td>
-<td>152</td>
-<td>2 000</td>
-<td>148</td>
-<td>−1 996</td>
+<td>516 531</td>
+<td>152 460</td>
+<td>2 000 000</td>
+<td>148 019</td>
+<td>−1 995 559</td>
+</tr>
+<tr>
+<th>25</th>
+<td>10 469</td>
+<td>305</td>
+<td>547 988</td>
+<td>157 033</td>
+<td>2 000 000</td>
+<td>152 460</td>
+<td>−1 995 426</td>
+</tr>
+<tr>
+<th>26</th>
+<td>10 783</td>
+<td>314</td>
+<td>581 361</td>
+<td>161 744</td>
+<td>2 000 000</td>
+<td>157 033</td>
+<td>−1 995 289</td>
+</tr>
+<tr>
+<th>27</th>
+<td>11 106</td>
+<td>323</td>
+<td>616 766</td>
+<td>166 597</td>
+<td>2 000 000</td>
+<td>161 744</td>
+<td>−1 995 148</td>
+</tr>
+<tr>
+<th>28</th>
+<td>11 440</td>
+<td>333</td>
+<td>654 327</td>
+<td>171 595</td>
+<td>2 000 000</td>
+<td>166 597</td>
+<td>−1 995 002</td>
+</tr>
+<tr>
+<th>29</th>
+<td>11 783</td>
+<td>343</td>
+<td>694 175</td>
+<td>176 742</td>
+<td>2 000 000</td>
+<td>171 595</td>
+<td>−1 994 852</td>
 </tr>
 <tr>
 <th>30</th>
 <td>12 136</td>
 <td>353</td>
-<td>736</td>
-<td>182</td>
-<td>2 000</td>
-<td>177</td>
-<td>−1 995</td>
+<td>736 450</td>
+<td>182 045</td>
+<td>2 000 000</td>
+<td>176 742</td>
+<td>−1 994 698</td>
+</tr>
+<tr>
+<th>31</th>
+<td>12 500</td>
+<td>364</td>
+<td>781 300</td>
+<td>187 506</td>
+<td>2 000 000</td>
+<td>182 045</td>
+<td>−1 994 539</td>
+</tr>
+<tr>
+<th>32</th>
+<td>12 875</td>
+<td>375</td>
+<td>828 881</td>
+<td>193 131</td>
+<td>2 000 000</td>
+<td>187 506</td>
+<td>−1 994 375</td>
+</tr>
+<tr>
+<th>33</th>
+<td>13 262</td>
+<td>386</td>
+<td>879 360</td>
+<td>198 925</td>
+<td>2 000 000</td>
+<td>193 131</td>
+<td>−1 994 206</td>
+</tr>
+<tr>
+<th>34</th>
+<td>13 660</td>
+<td>398</td>
+<td>932 913</td>
+<td>204 893</td>
+<td>2 000 000</td>
+<td>198 925</td>
+<td>−1 994 032</td>
+</tr>
+<tr>
+<th>35</th>
+<td>14 069</td>
+<td>410</td>
+<td>989 728</td>
+<td>211 040</td>
+<td>2 000 000</td>
+<td>204 893</td>
+<td>−1 993 853</td>
 </tr>
 <tr>
 <th>36</th>
 <td>14 491</td>
 <td>422</td>
-<td>1 050</td>
-<td>217</td>
-<td>2 000</td>
-<td>211</td>
-<td>−1 994</td>
+<td>1 050 002</td>
+<td>217 371</td>
+<td>2 000 000</td>
+<td>211 040</td>
+<td>−1 993 669</td>
 </tr>
 </tbody>
 </table>
