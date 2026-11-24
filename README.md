@@ -39,9 +39,9 @@ jupyter nbconvert --to html --output-dir reports notebooks/01_crm_efficiency.ipy
 
 | № | Лекция | Задача | Ноутбук | Отчет | Статус | Ключ зачета |
 |---|---|---|---|---|---|---|
-| 1 | 1 | Оценка экономической эффективности внедрения облачной CRM | [01_crm_efficiency.ipynb](notebooks/01_crm_efficiency.ipynb) | [HTML](reports/01_crm_efficiency.html), [PDF](reports/01_crm_efficiency.pdf) | Выполнено | — |
-| 2 | 3 | Расчет критической массы и ценности социальной сети | [02_network_critical_mass.ipynb](notebooks/02_network_critical_mass.ipynb) | [HTML](reports/02_network_critical_mass.html), [PDF](reports/02_network_critical_mass.pdf) | Выполнено | — |
-| 3 | 4 | Выбор ценовой стратегии для AI-сервиса по созданию контента | [03_ai_pricing_strategy.ipynb](notebooks/03_ai_pricing_strategy.ipynb) | [HTML](reports/03_ai_pricing_strategy.html), [PDF](reports/03_ai_pricing_strategy.pdf) | Выполнено | — |
+| 1 | 1 | Оценка экономической эффективности внедрения облачной CRM | [01_crm_efficiency.ipynb](notebooks/01_crm_efficiency.ipynb) | [HTML](reports/01_crm_efficiency.html), [PDF](reports/01_crm_efficiency.pdf) | Зачтено | `bb42a37308fb80bf6730ebcdc3f2abcb64001471a4204638b0d84485667cbe33` |
+| 2 | 3 | Расчет критической массы и ценности социальной сети | [02_network_critical_mass.ipynb](notebooks/02_network_critical_mass.ipynb) | [HTML](reports/02_network_critical_mass.html), [PDF](reports/02_network_critical_mass.pdf) | Зачтено | `5c7a900623a1afdeb0da48f660eaef02021bcfad78dbe88e6c60fdf2648490ea` |
+| 3 | 4 | Выбор ценовой стратегии для AI-сервиса по созданию контента | [03_ai_pricing_strategy.ipynb](notebooks/03_ai_pricing_strategy.ipynb) | [HTML](reports/03_ai_pricing_strategy.html), [PDF](reports/03_ai_pricing_strategy.pdf) | Зачтено | `ffc324f4d6562c634d93fdda817af9f1f5109ef2d2d1db064ce30c212f9cf7e4` |
 | 4 | 5 | Оптимизация рекламной нагрузки для платформы видеоконтента | [04_ad_load_optimization.ipynb](notebooks/04_ad_load_optimization.ipynb) | [HTML](reports/04_ad_load_optimization.html), [PDF](reports/04_ad_load_optimization.pdf) | Выполнено | — |
 | 5 | 6 | Расчет стоимости разработки по COCOMO II | [05_cocomo_cost.ipynb](notebooks/05_cocomo_cost.ipynb) | [HTML](reports/05_cocomo_cost.html), [PDF](reports/05_cocomo_cost.pdf) | Выполнено | — |
 
