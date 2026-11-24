@@ -1,0 +1,25 @@
+{
+  "kloc": 19.44,
+  "scale_factors_sum": 17,
+  "b": 1.08,
+  "em_total": 1.8402587499999998,
+  "effort_without_multipliers_pm": 72.46683466535409,
+  "effort_pm": 133.35772657772117,
+  "tdev_months": 13.857866486197029,
+  "direct_cost": 29338699.847098656,
+  "overhead": 7334674.961774664,
+  "cost_without_vat": 36673374.80887332,
+  "vat": 7334674.961774664,
+  "cost_with_vat": 44008049.77064798,
+  "moscow": {
+    "size_kloc": 23.85,
+    "effort_without_multipliers_pm": 101.93647782005412,
+    "effort_pm": 86.646006147046,
+    "staff_ratio": 14.441001024507665,
+    "staff": 16.856219124909416,
+    "paid_pm": 101.1373147494565,
+    "output_per_month": 140988.18461538464,
+    "pm_price": 123223.67335384617,
+    "cost_without_vat": 12462511.436572155
+  }
+}
