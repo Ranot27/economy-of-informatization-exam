@@ -8701,11 +8701,8 @@ C_{без\ НДС} = C_{прям} + C_{накл}, \qquad C_{с\ НДС} = C_{б�
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
 <div class="highlight hl-ipython3"><pre><span></span><span class="c1"># Задание 9. Стоимость с НДС</span>
-<span class="n">VAT</span> <span class="o">=</span> <span class="n">COST_NET</span> <span class="o">*</span> <span class="n">BASE</span><span class="p">[</span><span class="s2">"vat"</span><span class="p">]</span>                     <span class="c1"># сумма НДС</span>
-<span class="n">COST_GROSS</span> <span class="o">=</span> <span class="n">COST_NET</span> <span class="o">+</span> <span class="n">VAT</span>
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"НДС = </span><span class="si">{</span><span class="n">fmt</span><span class="p">(</span><span class="n">COST_NET</span><span class="p">)</span><span class="si">}</span><span class="s2"> × </span><span class="si">{</span><span class="n">pct</span><span class="p">(</span><span class="n">BASE</span><span class="p">[</span><span class="s1">'vat'</span><span class="p">])</span><span class="si">}</span><span class="s2"> = </span><span class="si">{</span><span class="n">fmt</span><span class="p">(</span><span class="n">VAT</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="n">MLN</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">)</span><span class="si">}</span><span class="s2"> млн руб. "</span>
-      <span class="sa">f</span><span class="s2">"(</span><span class="si">{</span><span class="n">fmt</span><span class="p">(</span><span class="n">VAT</span><span class="p">)</span><span class="si">}</span><span class="s2"> руб.)"</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Ответ на задание 9: стоимость с НДС = </span><span class="si">{</span><span class="n">fmt</span><span class="p">(</span><span class="n">COST_NET</span><span class="p">)</span><span class="si">}</span><span class="s2"> + </span><span class="si">{</span><span class="n">fmt</span><span class="p">(</span><span class="n">VAT</span><span class="p">)</span><span class="si">}</span><span class="s2"> = "</span>
+<span class="n">COST_GROSS</span> <span class="o">=</span> <span class="n">COST_NET</span> <span class="o">*</span> <span class="p">(</span><span class="mi">1</span> <span class="o">+</span> <span class="n">BASE</span><span class="p">[</span><span class="s2">"vat"</span><span class="p">])</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Ответ на задание 9: стоимость с НДС = </span><span class="si">{</span><span class="n">fmt</span><span class="p">(</span><span class="n">COST_NET</span><span class="p">)</span><span class="si">}</span><span class="s2"> × (1 + </span><span class="si">{</span><span class="n">fmt</span><span class="p">(</span><span class="n">BASE</span><span class="p">[</span><span class="s1">'vat'</span><span class="p">],</span><span class="w"> </span><span class="mi">2</span><span class="p">)</span><span class="si">}</span><span class="s2">) = "</span>
       <span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="n">fmt</span><span class="p">(</span><span class="n">COST_GROSS</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="n">MLN</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">)</span><span class="si">}</span><span class="s2"> млн руб. (</span><span class="si">{</span><span class="n">fmt</span><span class="p">(</span><span class="n">COST_GROSS</span><span class="p">)</span><span class="si">}</span><span class="s2"> руб.)"</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -8719,8 +8716,7 @@ C_{без\ НДС} = C_{прям} + C_{накл}, \qquad C_{с\ НДС} = C_{б�
 <div class="jp-OutputArea-child">
 <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
 <div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
-<pre>НДС = 36 673 375 × 20% = 7,33 млн руб. (7 334 675 руб.)
-Ответ на задание 9: стоимость с НДС = 36 673 375 + 7 334 675 = 44,01 млн руб. (44 008 050 руб.)
+<pre>Ответ на задание 9: стоимость с НДС = 36 673 375 × (1 + 0,20) = 44,01 млн руб. (44 008 050 руб.)
 </pre>
 </div>
 </div>
@@ -8742,7 +8738,8 @@ C_{без\ НДС} = C_{прям} + C_{накл}, \qquad C_{с\ НДС} = C_{б�
 продолжительность 6 месяцев, рентабельность 10%;</li>
 <li>размер ИС: $РР = ФТ \cdot К_п / 1000$ (раздел 2.1), для Java $К_п = 53$ (раздел 2.3);</li>
 <li>трудозатраты: $ОТр = A \cdot РР^{B} \cdot \prod МТ_i$, где $A = 5{,}17$ и $B = 0{,}94$ (раздел 4.1);</li>
-<li>численность по группам: $Ч_i = (ОТр / Т_п) \cdot К_{чi}$ (раздел 5.1);</li>
+<li>численность по группам: $Ч_i = (ОТр / Т_п) \cdot К_{чi}$ (раздел 5.1; таблица коэффициентов $К_{чi}$ дана
+для $ОТр / Т_п$ от 10 до 30);</li>
 <li>средняя выработка: $В_{ср} = ЗПБ_{2015} \cdot К_{пер} \cdot (1 + Р) / К_3$, где $ЗПБ_{2015} = 78\,300$ руб.
 и $К_3 = 0{,}65$ (раздел 5.3);</li>
 <li>стоимость работ: $Ц = В_{ср} \cdot Т_п \cdot Ч_п \cdot К_{кв(уч)}$ (раздел 5.3).</li>
@@ -8811,7 +8808,6 @@ C_{без\ НДС} = C_{прям} + C_{накл}, \qquad C_{с\ НДС} = C_{б�
     <span class="s2">"recalc"</span><span class="p">:</span> <span class="mf">1.064</span><span class="p">,</span>                 <span class="c1"># Кпер — коэффициент пересчета (условие У2)</span>
     <span class="s2">"qualification"</span><span class="p">:</span> <span class="mf">0.874</span><span class="p">,</span>          <span class="c1"># Ккв(уч) — коэффициент квалификации (условие У3)</span>
     <span class="s2">"managers"</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>                   <span class="c1"># руководитель проекта назначается отдельно (условие У4)</span>
-    <span class="s2">"staff_ratio_range"</span><span class="p">:</span> <span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">30</span><span class="p">),</span>   <span class="c1"># для каких ОТр / Тп дана таблица коэффициентов численности</span>
     <span class="c1"># Группы исполнителей: должность и коэффициент численности Кч (лекция №19, раздел 5.1)</span>
     <span class="s2">"staff"</span><span class="p">:</span> <span class="p">[</span>
         <span class="p">(</span><span class="s2">"Зам. руководителя"</span><span class="p">,</span> <span class="mf">0.058</span><span class="p">),</span>
@@ -8961,15 +8957,12 @@ C_{без\ НДС} = C_{прям} + C_{накл}, \qquad C_{с\ НДС} = C_{б�
 <div class="highlight hl-ipython3"><pre><span></span><span class="c1"># Методика г. Москвы, этапы 1 и 2: размер ИС и трудозатраты</span>
 <span class="c1"># Формулы того же вида, что в заданиях 1 и 4, поэтому берем функции из раздела 2.2</span>
 <span class="n">M_SIZE</span> <span class="o">=</span> <span class="n">size_kloc</span><span class="p">(</span><span class="n">MOSCOW</span><span class="p">[</span><span class="s2">"fp"</span><span class="p">],</span> <span class="n">MOSCOW</span><span class="p">[</span><span class="s2">"k_lang"</span><span class="p">],</span> <span class="mi">0</span><span class="p">)</span>            <span class="c1"># размер ИС (РР), тыс. строк</span>
-<span class="n">m_effort_nominal</span> <span class="o">=</span> <span class="n">effort_pm</span><span class="p">(</span><span class="n">MOSCOW</span><span class="p">[</span><span class="s2">"a"</span><span class="p">],</span> <span class="n">M_SIZE</span><span class="p">,</span> <span class="n">MOSCOW</span><span class="p">[</span><span class="s2">"b"</span><span class="p">],</span> <span class="mi">1</span><span class="p">)</span>                 <span class="c1"># без МТ</span>
 <span class="n">M_EFFORT</span> <span class="o">=</span> <span class="n">effort_pm</span><span class="p">(</span><span class="n">MOSCOW</span><span class="p">[</span><span class="s2">"a"</span><span class="p">],</span> <span class="n">M_SIZE</span><span class="p">,</span> <span class="n">MOSCOW</span><span class="p">[</span><span class="s2">"b"</span><span class="p">],</span> <span class="n">MOSCOW</span><span class="p">[</span><span class="s2">"mt_product"</span><span class="p">])</span>      <span class="c1"># ОТр</span>
 
 <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"РР = </span><span class="si">{</span><span class="n">fmt</span><span class="p">(</span><span class="n">MOSCOW</span><span class="p">[</span><span class="s1">'fp'</span><span class="p">])</span><span class="si">}</span><span class="s2"> × </span><span class="si">{</span><span class="n">fmt</span><span class="p">(</span><span class="n">MOSCOW</span><span class="p">[</span><span class="s1">'k_lang'</span><span class="p">])</span><span class="si">}</span><span class="s2"> / 1000 = "</span>
       <span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="n">fmt</span><span class="p">(</span><span class="n">M_SIZE</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">)</span><span class="si">}</span><span class="s2"> тыс. строк"</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Без коэффициентов МТ: A × РР^B = </span><span class="si">{</span><span class="n">fmt</span><span class="p">(</span><span class="n">MOSCOW</span><span class="p">[</span><span class="s1">'a'</span><span class="p">],</span><span class="w"> </span><span class="mi">2</span><span class="p">)</span><span class="si">}</span><span class="s2"> × </span><span class="si">{</span><span class="n">fmt</span><span class="p">(</span><span class="n">M_SIZE</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">)</span><span class="si">}</span><span class="s2">^"</span>
-      <span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="n">fmt</span><span class="p">(</span><span class="n">MOSCOW</span><span class="p">[</span><span class="s1">'b'</span><span class="p">],</span><span class="w"> </span><span class="mi">2</span><span class="p">)</span><span class="si">}</span><span class="s2"> = </span><span class="si">{</span><span class="n">fmt</span><span class="p">(</span><span class="n">m_effort_nominal</span><span class="p">,</span><span class="w"> </span><span class="mi">4</span><span class="p">)</span><span class="si">}</span><span class="s2"> чел.-мес."</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"ОТр = </span><span class="si">{</span><span class="n">fmt</span><span class="p">(</span><span class="n">m_effort_nominal</span><span class="p">,</span><span class="w"> </span><span class="mi">4</span><span class="p">)</span><span class="si">}</span><span class="s2"> × </span><span class="si">{</span><span class="n">fmt</span><span class="p">(</span><span class="n">MOSCOW</span><span class="p">[</span><span class="s1">'mt_product'</span><span class="p">],</span><span class="w"> </span><span class="mi">2</span><span class="p">)</span><span class="si">}</span><span class="s2"> = "</span>
-      <span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="n">fmt</span><span class="p">(</span><span class="n">M_EFFORT</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">)</span><span class="si">}</span><span class="s2"> чел.-мес."</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"ОТр = </span><span class="si">{</span><span class="n">fmt</span><span class="p">(</span><span class="n">MOSCOW</span><span class="p">[</span><span class="s1">'a'</span><span class="p">],</span><span class="w"> </span><span class="mi">2</span><span class="p">)</span><span class="si">}</span><span class="s2"> × </span><span class="si">{</span><span class="n">fmt</span><span class="p">(</span><span class="n">M_SIZE</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">)</span><span class="si">}</span><span class="s2">^</span><span class="si">{</span><span class="n">fmt</span><span class="p">(</span><span class="n">MOSCOW</span><span class="p">[</span><span class="s1">'b'</span><span class="p">],</span><span class="w"> </span><span class="mi">2</span><span class="p">)</span><span class="si">}</span><span class="s2"> × "</span>
+      <span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="n">fmt</span><span class="p">(</span><span class="n">MOSCOW</span><span class="p">[</span><span class="s1">'mt_product'</span><span class="p">],</span><span class="w"> </span><span class="mi">2</span><span class="p">)</span><span class="si">}</span><span class="s2"> = </span><span class="si">{</span><span class="n">fmt</span><span class="p">(</span><span class="n">M_EFFORT</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">)</span><span class="si">}</span><span class="s2"> чел.-мес."</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -8983,8 +8976,7 @@ C_{без\ НДС} = C_{прям} + C_{накл}, \qquad C_{с\ НДС} = C_{б�
 <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
 <div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
 <pre>РР = 450 × 53 / 1000 = 23,85 тыс. строк
-Без коэффициентов МТ: A × РР^B = 5,17 × 23,85^0,94 = 101,9365 чел.-мес.
-ОТр = 101,9365 × 0,85 = 86,65 чел.-мес.
+ОТр = 5,17 × 23,85^0,94 × 0,85 = 86,65 чел.-мес.
 </pre>
 </div>
 </div>
@@ -9000,14 +8992,7 @@ C_{без\ НДС} = C_{прям} + C_{накл}, \qquad C_{с\ НДС} = C_{б�
 <div class="cm-editor cm-s-jupyter">
 <div class="highlight hl-ipython3"><pre><span></span><span class="c1"># Методика г. Москвы, этап 3: численность исполнителей и стоимость работ</span>
 <span class="n">staff_ratio</span> <span class="o">=</span> <span class="n">M_EFFORT</span> <span class="o">/</span> <span class="n">MOSCOW</span><span class="p">[</span><span class="s2">"months"</span><span class="p">]</span>        <span class="c1"># ОТр / Тп</span>
-<span class="n">low</span><span class="p">,</span> <span class="n">high</span> <span class="o">=</span> <span class="n">MOSCOW</span><span class="p">[</span><span class="s2">"staff_ratio_range"</span><span class="p">]</span>
 <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"ОТр / Тп = </span><span class="si">{</span><span class="n">fmt</span><span class="p">(</span><span class="n">M_EFFORT</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">)</span><span class="si">}</span><span class="s2"> / </span><span class="si">{</span><span class="n">fmt</span><span class="p">(</span><span class="n">MOSCOW</span><span class="p">[</span><span class="s1">'months'</span><span class="p">])</span><span class="si">}</span><span class="s2"> = </span><span class="si">{</span><span class="n">fmt</span><span class="p">(</span><span class="n">staff_ratio</span><span class="p">,</span><span class="w"> </span><span class="mi">4</span><span class="p">)</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
-<span class="k">if</span> <span class="n">low</span> <span class="o">&lt;=</span> <span class="n">staff_ratio</span> <span class="o">&lt;=</span> <span class="n">high</span><span class="p">:</span>
-    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"  Значение в диапазоне </span><span class="si">{</span><span class="n">low</span><span class="si">}</span><span class="s2">–</span><span class="si">{</span><span class="n">high</span><span class="si">}</span><span class="s2">: таблица коэффициентов численности "</span>
-          <span class="s2">"из лекции подходит."</span><span class="p">)</span>
-<span class="k">else</span><span class="p">:</span>
-    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"  Значение вне диапазона </span><span class="si">{</span><span class="n">low</span><span class="si">}</span><span class="s2">–</span><span class="si">{</span><span class="n">high</span><span class="si">}</span><span class="s2">: таблица коэффициентов численности из лекции "</span>
-          <span class="s2">"дана для другого диапазона, результат приблизительный."</span><span class="p">)</span>
 
 <span class="c1"># Численность по группам: руководитель назначается отдельно, остальные — по формуле</span>
 <span class="n">rows</span> <span class="o">=</span> <span class="p">[{</span>
@@ -9055,7 +9040,6 @@ C_{без\ НДС} = C_{прям} + C_{накл}, \qquad C_{с\ НДС} = C_{б�
 <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
 <div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
 <pre>ОТр / Тп = 86,65 / 6 = 14,4410
-  Значение в диапазоне 10–30: таблица коэффициентов численности из лекции подходит.
 </pre>
 </div>
 </div>
@@ -9158,7 +9142,9 @@ C_{без\ НДС} = C_{прям} + C_{накл}, \qquad C_{с\ НДС} = C_{б�
 <span class="c1"># Дополнительные показатели для сравнения (в заданиях 1–9 их нет):</span>
 <span class="n">TEAM</span> <span class="o">=</span> <span class="n">EFFORT</span> <span class="o">/</span> <span class="n">TDEV</span>                             <span class="c1"># средняя численность: трудоемкость / длительность</span>
 <span class="n">PM_PRICE</span> <span class="o">=</span> <span class="n">COST_NET</span> <span class="o">/</span> <span class="n">EFFORT</span>                     <span class="c1"># стоимость одного чел.-мес. без НДС, COCOMO II</span>
-<span class="n">effort_nominal</span> <span class="o">=</span> <span class="n">effort_pm</span><span class="p">(</span><span class="n">BASE</span><span class="p">[</span><span class="s2">"a"</span><span class="p">],</span> <span class="n">KLOC</span><span class="p">,</span> <span class="n">B</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>          <span class="c1"># трудоемкость без множителей (EM = 1)</span>
+<span class="c1"># Трудозатраты без множителей: те же формулы, но множители равны 1</span>
+<span class="n">effort_nominal</span> <span class="o">=</span> <span class="n">effort_pm</span><span class="p">(</span><span class="n">BASE</span><span class="p">[</span><span class="s2">"a"</span><span class="p">],</span> <span class="n">KLOC</span><span class="p">,</span> <span class="n">B</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>                         <span class="c1"># COCOMO II</span>
+<span class="n">m_effort_nominal</span> <span class="o">=</span> <span class="n">effort_pm</span><span class="p">(</span><span class="n">MOSCOW</span><span class="p">[</span><span class="s2">"a"</span><span class="p">],</span> <span class="n">M_SIZE</span><span class="p">,</span> <span class="n">MOSCOW</span><span class="p">[</span><span class="s2">"b"</span><span class="p">],</span> <span class="mi">1</span><span class="p">)</span>         <span class="c1"># методика г. Москвы</span>
 <span class="c1"># Стоимость по методике г. Москвы (Ц = Вср × Тп × Чп × Ккв(уч)) — те же сомножители в два шага:</span>
 <span class="n">M_PAID</span> <span class="o">=</span> <span class="n">M_STAFF</span> <span class="o">*</span> <span class="n">MOSCOW</span><span class="p">[</span><span class="s2">"months"</span><span class="p">]</span>              <span class="c1"># оплачиваемые человеко-месяцы: Чп × Тп</span>
 <span class="n">M_PM_PRICE</span> <span class="o">=</span> <span class="n">M_OUTPUT</span> <span class="o">*</span> <span class="n">MOSCOW</span><span class="p">[</span><span class="s2">"qualification"</span><span class="p">]</span>  <span class="c1"># цена одного такого чел.-мес.: Вср × Ккв(уч)</span>
@@ -9424,6 +9410,7 @@ C_{без\ НДС} = C_{прям} + C_{накл}, \qquad C_{с\ НДС} = C_{б�
 <div class="cm-editor cm-s-jupyter">
 <div class="highlight hl-ipython3"><pre><span></span><span class="c1"># График 2. Из чего складывается стоимость разработки</span>
 <span class="n">labels</span> <span class="o">=</span> <span class="p">[</span><span class="s2">"Прямые затраты"</span><span class="p">,</span> <span class="s2">"Полная стоимость</span><span class="se">\n</span><span class="s2">без НДС"</span><span class="p">,</span> <span class="s2">"Стоимость</span><span class="se">\n</span><span class="s2">с НДС"</span><span class="p">]</span>
+<span class="n">VAT</span> <span class="o">=</span> <span class="n">COST_NET</span> <span class="o">*</span> <span class="n">BASE</span><span class="p">[</span><span class="s2">"vat"</span><span class="p">]</span>                                     <span class="c1"># сумма НДС</span>
 <span class="n">direct_part</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="n">DIRECT</span><span class="p">,</span> <span class="n">DIRECT</span><span class="p">,</span> <span class="n">DIRECT</span><span class="p">])</span> <span class="o">/</span> <span class="n">MLN</span>           <span class="c1"># прямые — во всех столбцах</span>
 <span class="n">overhead_part</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="n">OVERHEAD</span><span class="p">,</span> <span class="n">OVERHEAD</span><span class="p">])</span> <span class="o">/</span> <span class="n">MLN</span>          <span class="c1"># накладные — во втором и третьем</span>
 <span class="n">vat_part</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">VAT</span><span class="p">])</span> <span class="o">/</span> <span class="n">MLN</span>                           <span class="c1"># НДС — только в третьем</span>
@@ -9582,8 +9569,7 @@ C_{без\ НДС} = C_{прям} + C_{накл}, \qquad C_{с\ НДС} = C_{б�
 <li><strong>Длительность (задание 5).</strong> 13,86 месяца — около года и двух месяцев. Средняя команда — 9,6 человека:
 трудоемкость, деленная на срок (посчитана в разделе 2.7). Это дополнительный показатель: в условии его нет.</li>
 <li><strong>Стоимость (задания 6–9).</strong> Прямые затраты — 29,34 млн руб., накладные расходы — 7,33 млн руб., полная стоимость
-без НДС — 36,67 млн руб., с НДС — 44,01 млн руб. Сумма НДС тоже 7,33 млн руб.: 20% от полной стоимости и 25%
-от прямых затрат — одно и то же число, потому что 0,20 × 1,25 = 0,25.</li>
+без НДС — 36,67 млн руб., с НДС — 44,01 млн руб.</li>
 <li><strong>Что сильнее всего влияет на результат.</strong> Стоимость прямо пропорциональна трудоемкости, а трудоемкость —
 произведению множителей. Каждый множитель 1,15 увеличивает стоимость в 1,15 раза. Размер влияет чуть сильнее,
 чем пропорционально, потому что B больше единицы.</li>
@@ -9652,7 +9638,7 @@ C_{без\ НДС} = C_{прям} + C_{накл}, \qquad C_{с\ НДС} = C_{б�
 <li>Трудоемкость — 133,36 чел.-мес., длительность — 13,86 месяца.</li>
 <li>Пять множителей трудоемкости больше единицы увеличивают трудоемкость и стоимость на 84%. Без них проект
 потребовал бы 72,47 чел.-мес.</li>
-<li>Прямые затраты — 29,34 млн руб., накладные расходы — 7,33 млн руб., НДС — 7,33 млн руб.</li>
+<li>Прямые затраты — 29,34 млн руб., накладные расходы — 7,33 млн руб.</li>
 <li>Задание лекции №19 по методике г. Москвы дает 86,65 чел.-мес. и 12,46 млн руб. без НДС. Главные причины
 расхождения — множители (1,84 против 0,85) и цена человеко-месяца (275 000 против 123 224 руб.). Размер
 и константы формулы действуют в обратную сторону и расхождение частично сглаживают.</li>
