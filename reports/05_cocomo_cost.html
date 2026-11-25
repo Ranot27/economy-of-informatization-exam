@@ -8360,32 +8360,34 @@ C_{без\ НДС} = C_{прям} + C_{накл}, \qquad C_{с\ НДС} = C_{б�
 <div class="jp-InputPrompt jp-InputArea-prompt">In [3]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
-<div class="highlight hl-ipython3"><pre><span></span><span class="c1"># Функции повторяют формулы из раздела 2.1</span>
-<span class="k">def</span><span class="w"> </span><span class="nf">size_kloc</span><span class="p">(</span><span class="n">fp</span><span class="p">,</span> <span class="n">k_lang</span><span class="p">,</span> <span class="n">reuse</span><span class="p">):</span>
-<span class="w">    </span><span class="sd">"""Размер в тысячах строк кода по формуле задания 1."""</span>
-    <span class="k">return</span> <span class="n">fp</span> <span class="o">*</span> <span class="n">k_lang</span> <span class="o">/</span> <span class="mi">1000</span> <span class="o">*</span> <span class="p">(</span><span class="mi">1</span> <span class="o">-</span> <span class="n">reuse</span><span class="p">)</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="c1"># Функции повторяют формулы из раздела 2.1. Переменные названы так же, как буквы в формулах:</span>
+<span class="c1"># fp — FP, k_p — K_п, k_povt — k_повт, sf_sum — Σ SF, em_i — EM_i, em_total — EM_total</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">size_kloc</span><span class="p">(</span><span class="n">fp</span><span class="p">,</span> <span class="n">k_p</span><span class="p">,</span> <span class="n">k_povt</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">"""Размер по формуле задания 1: KLOC = FP × K_п / 1000 × (1 − k_повт), тыс. строк."""</span>
+    <span class="k">return</span> <span class="n">fp</span> <span class="o">*</span> <span class="n">k_p</span> <span class="o">/</span> <span class="mi">1000</span> <span class="o">*</span> <span class="p">(</span><span class="mi">1</span> <span class="o">-</span> <span class="n">k_povt</span><span class="p">)</span>
 
 
 <span class="k">def</span><span class="w"> </span><span class="nf">scale_exponent</span><span class="p">(</span><span class="n">sf_sum</span><span class="p">):</span>
-<span class="w">    </span><span class="sd">"""Коэффициент масштаба B по формуле задания 2 (sf_sum — сумма коэффициентов масштаба)."""</span>
-    <span class="k">return</span> <span class="n">BASE</span><span class="p">[</span><span class="s2">"b_base"</span><span class="p">]</span> <span class="o">+</span> <span class="n">BASE</span><span class="p">[</span><span class="s2">"sf_weight"</span><span class="p">]</span> <span class="o">*</span> <span class="n">sf_sum</span>
+<span class="w">    </span><span class="sd">"""Коэффициент масштаба по формуле задания 2: B = B_base + 0,01 × Σ SF."""</span>
+    <span class="n">b_base</span> <span class="o">=</span> <span class="n">BASE</span><span class="p">[</span><span class="s2">"b_base"</span><span class="p">]</span>
+    <span class="k">return</span> <span class="n">b_base</span> <span class="o">+</span> <span class="n">BASE</span><span class="p">[</span><span class="s2">"sf_weight"</span><span class="p">]</span> <span class="o">*</span> <span class="n">sf_sum</span>
 
 
 <span class="k">def</span><span class="w"> </span><span class="nf">multipliers_product</span><span class="p">():</span>
-<span class="w">    </span><span class="sd">"""Произведение всех множителей трудоемкости EM_total (задание 3)."""</span>
-    <span class="n">product</span> <span class="o">=</span> <span class="mi">1</span>
-    <span class="k">for</span> <span class="n">name</span><span class="p">,</span> <span class="n">value</span><span class="p">,</span> <span class="n">meaning</span> <span class="ow">in</span> <span class="n">BASE</span><span class="p">[</span><span class="s2">"effort_multipliers"</span><span class="p">]:</span>
-        <span class="n">product</span> <span class="o">*=</span> <span class="n">value</span>                         <span class="c1"># перемножаем множители по одному</span>
-    <span class="k">return</span> <span class="n">product</span>
+<span class="w">    </span><span class="sd">"""Произведение множителей по формуле задания 3: EM_total = ∏ EM_i."""</span>
+    <span class="n">em_total</span> <span class="o">=</span> <span class="mi">1</span>
+    <span class="k">for</span> <span class="n">name</span><span class="p">,</span> <span class="n">em_i</span><span class="p">,</span> <span class="n">meaning</span> <span class="ow">in</span> <span class="n">BASE</span><span class="p">[</span><span class="s2">"effort_multipliers"</span><span class="p">]:</span>
+        <span class="n">em_total</span> <span class="o">*=</span> <span class="n">em_i</span>                         <span class="c1"># перемножаем множители по одному</span>
+    <span class="k">return</span> <span class="n">em_total</span>
 
 
-<span class="k">def</span><span class="w"> </span><span class="nf">effort_pm</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">size</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">multipliers</span><span class="p">):</span>
-<span class="w">    </span><span class="sd">"""Трудоемкость в человеко-месяцах по формуле задания 4: константа × размер^B × множители."""</span>
-    <span class="k">return</span> <span class="n">a</span> <span class="o">*</span> <span class="n">size</span> <span class="o">**</span> <span class="n">b</span> <span class="o">*</span> <span class="n">multipliers</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">effort_pm</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">kloc</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">em_total</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">"""Трудоемкость по формуле задания 4: Effort = A × KLOC^B × EM_total, чел.-мес."""</span>
+    <span class="k">return</span> <span class="n">a</span> <span class="o">*</span> <span class="n">kloc</span> <span class="o">**</span> <span class="n">b</span> <span class="o">*</span> <span class="n">em_total</span>
 
 
 <span class="k">def</span><span class="w"> </span><span class="nf">duration_months</span><span class="p">(</span><span class="n">effort</span><span class="p">):</span>
-<span class="w">    </span><span class="sd">"""Длительность разработки в месяцах по формуле задания 5."""</span>
+<span class="w">    </span><span class="sd">"""Длительность по формуле задания 5: TDEV = 2,5 × Effort^0,35, мес."""</span>
     <span class="k">return</span> <span class="n">BASE</span><span class="p">[</span><span class="s2">"tdev_c"</span><span class="p">]</span> <span class="o">*</span> <span class="n">effort</span> <span class="o">**</span> <span class="n">BASE</span><span class="p">[</span><span class="s2">"tdev_d"</span><span class="p">]</span>
 </pre></div>
 </div>
