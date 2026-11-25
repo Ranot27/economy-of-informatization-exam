@@ -8490,35 +8490,12 @@ C_{без\ НДС} = C_{прям} + C_{накл}, \qquad C_{с\ НДС} = C_{б�
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
 <div class="highlight hl-ipython3"><pre><span></span><span class="c1"># Задание 3. Произведение всех множителей трудоемкости</span>
-<span class="n">changing</span> <span class="o">=</span> <span class="p">[]</span>                                    <span class="c1"># множители, которые не равны 1</span>
-<span class="n">neutral</span> <span class="o">=</span> <span class="mi">0</span>                                      <span class="c1"># сколько множителей равны 1</span>
-<span class="k">for</span> <span class="n">name</span><span class="p">,</span> <span class="n">value</span><span class="p">,</span> <span class="n">meaning</span> <span class="ow">in</span> <span class="n">BASE</span><span class="p">[</span><span class="s2">"effort_multipliers"</span><span class="p">]:</span>
-    <span class="k">if</span> <span class="n">value</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
-        <span class="n">neutral</span> <span class="o">+=</span> <span class="mi">1</span>
-    <span class="k">else</span><span class="p">:</span>
-        <span class="n">changing</span><span class="o">.</span><span class="n">append</span><span class="p">((</span><span class="n">name</span><span class="p">,</span> <span class="n">value</span><span class="p">,</span> <span class="n">meaning</span><span class="p">))</span>
-
-<span class="c1"># Множители, которые меняют трудоемкость</span>
-<span class="n">rows</span> <span class="o">=</span> <span class="p">[]</span>
-<span class="n">values_text</span> <span class="o">=</span> <span class="p">[]</span>
-<span class="k">for</span> <span class="n">name</span><span class="p">,</span> <span class="n">value</span><span class="p">,</span> <span class="n">meaning</span> <span class="ow">in</span> <span class="n">changing</span><span class="p">:</span>
-    <span class="n">rows</span><span class="o">.</span><span class="n">append</span><span class="p">({</span>
-        <span class="s2">"Множитель"</span><span class="p">:</span> <span class="n">name</span><span class="p">,</span>
-        <span class="s2">"Значение"</span><span class="p">:</span> <span class="n">fmt</span><span class="p">(</span><span class="n">value</span><span class="p">,</span> <span class="mi">2</span><span class="p">),</span>
-        <span class="s2">"Интерпретация"</span><span class="p">:</span> <span class="n">meaning</span><span class="p">,</span>
-        <span class="s2">"Изменение трудоемкости"</span><span class="p">:</span> <span class="p">(</span><span class="s2">"+"</span> <span class="k">if</span> <span class="n">value</span> <span class="o">&gt;</span> <span class="mi">1</span> <span class="k">else</span> <span class="s2">""</span><span class="p">)</span> <span class="o">+</span> <span class="n">pct</span><span class="p">(</span><span class="n">value</span> <span class="o">-</span> <span class="mi">1</span><span class="p">),</span>
-    <span class="p">})</span>
-    <span class="n">values_text</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">fmt</span><span class="p">(</span><span class="n">value</span><span class="p">,</span> <span class="mi">2</span><span class="p">))</span>
-<span class="k">if</span> <span class="n">rows</span><span class="p">:</span>
-    <span class="n">display</span><span class="p">(</span><span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">rows</span><span class="p">)</span><span class="o">.</span><span class="n">set_index</span><span class="p">(</span><span class="s2">"Множитель"</span><span class="p">))</span>
-
 <span class="n">EM_TOTAL</span> <span class="o">=</span> <span class="n">multipliers_product</span><span class="p">()</span>
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Всего множителей: </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">BASE</span><span class="p">[</span><span class="s1">'effort_multipliers'</span><span class="p">])</span><span class="si">}</span><span class="s2">. Из них </span><span class="si">{</span><span class="n">neutral</span><span class="si">}</span><span class="s2"> равны 1,00 "</span>
-      <span class="s2">"и на произведение не влияют."</span><span class="p">)</span>
-<span class="k">if</span> <span class="n">values_text</span><span class="p">:</span>
-    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Ответ на задание 3: EM_total = </span><span class="si">{</span><span class="s1">' × '</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">values_text</span><span class="p">)</span><span class="si">}</span><span class="s2"> = </span><span class="si">{</span><span class="n">fmt</span><span class="p">(</span><span class="n">EM_TOTAL</span><span class="p">,</span><span class="w"> </span><span class="mi">4</span><span class="p">)</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
-<span class="k">else</span><span class="p">:</span>
-    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Ответ на задание 3: EM_total = </span><span class="si">{</span><span class="n">fmt</span><span class="p">(</span><span class="n">EM_TOTAL</span><span class="p">,</span><span class="w"> </span><span class="mi">4</span><span class="p">)</span><span class="si">}</span><span class="s2"> — все множители равны 1,00"</span><span class="p">)</span>
+
+<span class="n">em_text</span> <span class="o">=</span> <span class="p">[]</span>                                     <span class="c1"># значения множителей для строки расчета</span>
+<span class="k">for</span> <span class="n">name</span><span class="p">,</span> <span class="n">em_i</span><span class="p">,</span> <span class="n">meaning</span> <span class="ow">in</span> <span class="n">BASE</span><span class="p">[</span><span class="s2">"effort_multipliers"</span><span class="p">]:</span>
+    <span class="n">em_text</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">fmt</span><span class="p">(</span><span class="n">em_i</span><span class="p">,</span> <span class="mi">2</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Ответ на задание 3: EM_total = </span><span class="si">{</span><span class="s1">' × '</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">em_text</span><span class="p">)</span><span class="si">}</span><span class="s2"> = </span><span class="si">{</span><span class="n">fmt</span><span class="p">(</span><span class="n">EM_TOTAL</span><span class="p">,</span><span class="w"> </span><span class="mi">4</span><span class="p">)</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -8530,77 +8507,8 @@ C_{без\ НДС} = C_{прям} + C_{накл}, \qquad C_{с\ НДС} = C_{б�
 <div class="jp-OutputArea jp-Cell-outputArea">
 <div class="jp-OutputArea-child">
 <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
-<div class="jp-RenderedHTMLCommon jp-RenderedHTML jp-OutputArea-output" data-mime-type="text/html" tabindex="0">
-<div>
-<style scoped="">
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
-
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
-</style>
-<table border="1" class="dataframe">
-<thead>
-<tr style="text-align: right;">
-<th></th>
-<th>Значение</th>
-<th>Интерпретация</th>
-<th>Изменение трудоемкости</th>
-</tr>
-<tr>
-<th>Множитель</th>
-<th></th>
-<th></th>
-<th></th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<th>RELY</th>
-<td>1,15</td>
-<td>Высокая надежность (критичные последствия)</td>
-<td>+15%</td>
-</tr>
-<tr>
-<th>CPLX</th>
-<td>1,15</td>
-<td>Высокая сложность алгоритмов</td>
-<td>+15%</td>
-</tr>
-<tr>
-<th>ACAP</th>
-<td>1,15</td>
-<td>Высокие способности аналитиков</td>
-<td>+15%</td>
-</tr>
-<tr>
-<th>PCAP</th>
-<td>1,10</td>
-<td>Средние способности разработчиков</td>
-<td>+10%</td>
-</tr>
-<tr>
-<th>RUSE</th>
-<td>1,10</td>
-<td>Требуется повторное использование компонентов</td>
-<td>+10%</td>
-</tr>
-</tbody>
-</table>
-</div>
-</div>
-</div>
-<div class="jp-OutputArea-child">
-<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
 <div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
-<pre>Всего множителей: 15. Из них 10 равны 1,00 и на произведение не влияют.
-Ответ на задание 3: EM_total = 1,15 × 1,15 × 1,15 × 1,10 × 1,10 = 1,8403
+<pre>Ответ на задание 3: EM_total = 1,15 × 1,00 × 1,15 × 1,00 × 1,00 × 1,15 × 1,10 × 1,00 × 1,00 × 1,00 × 1,00 × 1,00 × 1,00 × 1,00 × 1,10 = 1,8403
 </pre>
 </div>
 </div>
@@ -8615,12 +8523,9 @@ C_{без\ НДС} = C_{прям} + C_{накл}, \qquad C_{с\ НДС} = C_{б�
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
 <div class="highlight hl-ipython3"><pre><span></span><span class="c1"># Задание 4. Трудоемкость разработки</span>
-<span class="n">effort_nominal</span> <span class="o">=</span> <span class="n">effort_pm</span><span class="p">(</span><span class="n">BASE</span><span class="p">[</span><span class="s2">"a"</span><span class="p">],</span> <span class="n">KLOC</span><span class="p">,</span> <span class="n">B</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>          <span class="c1"># если бы все множители были равны 1</span>
-<span class="n">EFFORT</span> <span class="o">=</span> <span class="n">effort_pm</span><span class="p">(</span><span class="n">BASE</span><span class="p">[</span><span class="s2">"a"</span><span class="p">],</span> <span class="n">KLOC</span><span class="p">,</span> <span class="n">B</span><span class="p">,</span> <span class="n">EM_TOTAL</span><span class="p">)</span>           <span class="c1"># с учетом множителей</span>
+<span class="n">EFFORT</span> <span class="o">=</span> <span class="n">effort_pm</span><span class="p">(</span><span class="n">BASE</span><span class="p">[</span><span class="s2">"a"</span><span class="p">],</span> <span class="n">KLOC</span><span class="p">,</span> <span class="n">B</span><span class="p">,</span> <span class="n">EM_TOTAL</span><span class="p">)</span>
 
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Без множителей: A × KLOC^B = </span><span class="si">{</span><span class="n">fmt</span><span class="p">(</span><span class="n">BASE</span><span class="p">[</span><span class="s1">'a'</span><span class="p">],</span><span class="w"> </span><span class="mi">2</span><span class="p">)</span><span class="si">}</span><span class="s2"> × </span><span class="si">{</span><span class="n">fmt</span><span class="p">(</span><span class="n">KLOC</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">)</span><span class="si">}</span><span class="s2">^</span><span class="si">{</span><span class="n">fmt</span><span class="p">(</span><span class="n">B</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">)</span><span class="si">}</span><span class="s2"> = "</span>
-      <span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="n">fmt</span><span class="p">(</span><span class="n">effort_nominal</span><span class="p">,</span><span class="w"> </span><span class="mi">4</span><span class="p">)</span><span class="si">}</span><span class="s2"> чел.-мес."</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Ответ на задание 4: Effort = A × KLOC^B × EM_total = </span><span class="si">{</span><span class="n">fmt</span><span class="p">(</span><span class="n">effort_nominal</span><span class="p">,</span><span class="w"> </span><span class="mi">4</span><span class="p">)</span><span class="si">}</span><span class="s2"> × "</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Ответ на задание 4: Effort = </span><span class="si">{</span><span class="n">fmt</span><span class="p">(</span><span class="n">BASE</span><span class="p">[</span><span class="s1">'a'</span><span class="p">],</span><span class="w"> </span><span class="mi">2</span><span class="p">)</span><span class="si">}</span><span class="s2"> × </span><span class="si">{</span><span class="n">fmt</span><span class="p">(</span><span class="n">KLOC</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">)</span><span class="si">}</span><span class="s2">^</span><span class="si">{</span><span class="n">fmt</span><span class="p">(</span><span class="n">B</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">)</span><span class="si">}</span><span class="s2"> × "</span>
       <span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="n">fmt</span><span class="p">(</span><span class="n">EM_TOTAL</span><span class="p">,</span><span class="w"> </span><span class="mi">4</span><span class="p">)</span><span class="si">}</span><span class="s2"> = </span><span class="si">{</span><span class="n">fmt</span><span class="p">(</span><span class="n">EFFORT</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">)</span><span class="si">}</span><span class="s2"> чел.-мес."</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -8634,8 +8539,7 @@ C_{без\ НДС} = C_{прям} + C_{накл}, \qquad C_{с\ НДС} = C_{б�
 <div class="jp-OutputArea-child">
 <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
 <div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
-<pre>Без множителей: A × KLOC^B = 2,94 × 19,44^1,08 = 72,4668 чел.-мес.
-Ответ на задание 4: Effort = A × KLOC^B × EM_total = 72,4668 × 1,8403 = 133,36 чел.-мес.
+<pre>Ответ на задание 4: Effort = 2,94 × 19,44^1,08 × 1,8403 = 133,36 чел.-мес.
 </pre>
 </div>
 </div>
@@ -9254,6 +9158,7 @@ C_{без\ НДС} = C_{прям} + C_{накл}, \qquad C_{с\ НДС} = C_{б�
 <span class="c1"># Дополнительные показатели для сравнения (в заданиях 1–9 их нет):</span>
 <span class="n">TEAM</span> <span class="o">=</span> <span class="n">EFFORT</span> <span class="o">/</span> <span class="n">TDEV</span>                             <span class="c1"># средняя численность: трудоемкость / длительность</span>
 <span class="n">PM_PRICE</span> <span class="o">=</span> <span class="n">COST_NET</span> <span class="o">/</span> <span class="n">EFFORT</span>                     <span class="c1"># стоимость одного чел.-мес. без НДС, COCOMO II</span>
+<span class="n">effort_nominal</span> <span class="o">=</span> <span class="n">effort_pm</span><span class="p">(</span><span class="n">BASE</span><span class="p">[</span><span class="s2">"a"</span><span class="p">],</span> <span class="n">KLOC</span><span class="p">,</span> <span class="n">B</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>          <span class="c1"># трудоемкость без множителей (EM = 1)</span>
 <span class="c1"># Стоимость по методике г. Москвы (Ц = Вср × Тп × Чп × Ккв(уч)) — те же сомножители в два шага:</span>
 <span class="n">M_PAID</span> <span class="o">=</span> <span class="n">M_STAFF</span> <span class="o">*</span> <span class="n">MOSCOW</span><span class="p">[</span><span class="s2">"months"</span><span class="p">]</span>              <span class="c1"># оплачиваемые человеко-месяцы: Чп × Тп</span>
 <span class="n">M_PM_PRICE</span> <span class="o">=</span> <span class="n">M_OUTPUT</span> <span class="o">*</span> <span class="n">MOSCOW</span><span class="p">[</span><span class="s2">"qualification"</span><span class="p">]</span>  <span class="c1"># цена одного такого чел.-мес.: Вср × Ккв(уч)</span>
