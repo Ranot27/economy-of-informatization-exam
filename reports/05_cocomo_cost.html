@@ -8292,8 +8292,7 @@ a.anchor-link {
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
 <h3 id="1.2.-%D0%A1%D0%BF%D1%80%D0%B0%D0%B2%D0%BE%D1%87%D0%BD%D1%8B%D0%B5-%D0%B4%D0%B0%D0%BD%D0%BD%D1%8B%D0%B5-%D0%B8-%D0%B4%D0%BE%D0%BF%D1%83%D1%89%D0%B5%D0%BD%D0%B8%D1%8F">1.2. Справочные данные и допущения<a class="anchor-link" href="#1.2.-%D0%A1%D0%BF%D1%80%D0%B0%D0%B2%D0%BE%D1%87%D0%BD%D1%8B%D0%B5-%D0%B4%D0%B0%D0%BD%D0%BD%D1%8B%D0%B5-%D0%B8-%D0%B4%D0%BE%D0%BF%D1%83%D1%89%D0%B5%D0%BD%D0%B8%D1%8F">¶</a></h3><p><strong>Справочные данные</strong> вводятся там, где они нужны: формулы из условия и лекции №6 — в разделе 2.1, данные задания
 лекции №19 и значения из лекций №19 и №17 для методики г. Москвы — в разделе 2.7.</p>
-<p><strong>Допущения</strong> — то, чего нет ни в условии задачи, ни в задании лекции №19, но без чего расчет не довести до числа.
-Их пять: одно нужно для стоимости (задание 7), четыре — для расчета по методике г. Москвы (задание 10).</p>
+<p><strong>Допущение</strong> — то, чего нет в условии задачи, но без чего расчет не довести до числа. В заданиях 1–9 оно одно.</p>
 <table>
 <thead>
 <tr>
@@ -8310,32 +8309,9 @@ a.anchor-link {
 <td>В условии накладные расходы заданы как 25% от ФОТ, а что входит в ФОТ, не сказано. Стоимость человеко-месяца — это оплата труда исполнителей, других затрат на труд в условии нет</td>
 <td>Задание 7 (раздел 2.6)</td>
 </tr>
-<tr>
-<td>Д2</td>
-<td>В задании лекции №19 запись «МТi = 0,85» — это произведение всех коэффициентов трудоемкости МТ1–МТ7, а не значение каждого из них</td>
-<td>В примере лекции №19 (раздел 4.2) записано так же: «МТ1-МТ7 = 0.740 (произведение)»</td>
-<td>Задание 10 (раздел 2.7): трудозатраты</td>
-</tr>
-<tr>
-<td>Д3</td>
-<td>Коэффициент пересчета $К_{пер} = 1{,}064$</td>
-<td>В задании лекции №19 он не задан. Это значение из примера расчета НМЦК в лекции №17 (раздел 4.4) — другого в методичке нет</td>
-<td>Задание 10 (раздел 2.7): стоимость</td>
-</tr>
-<tr>
-<td>Д4</td>
-<td>Коэффициент квалификации $К_{кв(уч)} = 0{,}874$</td>
-<td>Для расчета по формуле лекции №19 (раздел 5.2) нужны коэффициенты участия, а их в лекции нет. Значение 0,874 стоит в примерах лекций №17 (раздел 4.4) и №19 (раздел 6)</td>
-<td>Задание 10 (раздел 2.7): стоимость</td>
-</tr>
-<tr>
-<td>Д5</td>
-<td>Численность по группам не округляется. Руководитель проекта — один человек сверх расчета по формуле</td>
-<td>Правил округления в лекции №19 нет. У руководителя проекта в таблице вместо коэффициента численности записано: «назначается отдельно»</td>
-<td>Задание 10 (раздел 2.7): стоимость</td>
-</tr>
 </tbody>
 </table>
+<p>Для задания 10 нужны еще четыре условия У1–У4. Они введены прямо перед этим заданием — в разделе 2.7.</p>
 <h3 id="1.3.-%D0%94%D0%BE%D0%BF%D0%BE%D0%BB%D0%BD%D0%B8%D1%82%D0%B5%D0%BB%D1%8C%D0%BD%D0%B0%D1%8F-%D0%B8%D0%BD%D1%84%D0%BE%D1%80%D0%BC%D0%B0%D1%86%D0%B8%D1%8F">1.3. Дополнительная информация<a class="anchor-link" href="#1.3.-%D0%94%D0%BE%D0%BF%D0%BE%D0%BB%D0%BD%D0%B8%D1%82%D0%B5%D0%BB%D1%8C%D0%BD%D0%B0%D1%8F-%D0%B8%D0%BD%D1%84%D0%BE%D1%80%D0%BC%D0%B0%D1%86%D0%B8%D1%8F">¶</a></h3><p>Пояснения к тому, как прочитано условие и как ведется расчет. Нового в условие они не добавляют.</p>
 <ul>
 <li><strong>Множителей трудоемкости — 15.</strong> В произведение входят все множители из таблицы условия. В критериях оценки
@@ -8911,8 +8887,44 @@ C_{без\ НДС} = C_{прям} + C_{накл}, \qquad C_{с\ НДС} = C_{б�
 и $К_3 = 0{,}65$ (раздел 5.3);</li>
 <li>стоимость работ: $Ц = В_{ср} \cdot Т_п \cdot Ч_п \cdot К_{кв(уч)}$ (раздел 5.3).</li>
 </ul>
-<p>В задании лекции №19 заданы не все величины из этих формул. Недостающие взяты по допущениям Д2–Д5 из раздела 1.2:
-они отмечены в словаре и в таблице ниже.</p>
+<p><strong>Условия для задания 10.</strong> В задании лекции №19 заданы не все величины из этих формул. Чего в нем не сказано,
+принято в четырех условиях. В словаре и в таблице ниже такие значения отмечены.</p>
+<table>
+<thead>
+<tr>
+<th>№</th>
+<th>Условие</th>
+<th>Почему так</th>
+<th>На что влияет</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>У1</td>
+<td>В задании лекции №19 запись «МТi = 0,85» — это произведение всех коэффициентов трудоемкости МТ1–МТ7, а не значение каждого из них</td>
+<td>В примере лекции №19 (раздел 4.2) записано так же: «МТ1-МТ7 = 0.740 (произведение)»</td>
+<td>Трудозатраты и стоимость</td>
+</tr>
+<tr>
+<td>У2</td>
+<td>Коэффициент пересчета $К_{пер} = 1{,}064$</td>
+<td>В задании лекции №19 он не задан. Это значение из примера расчета НМЦК в лекции №17 (раздел 4.4) — другого в методичке нет</td>
+<td>Стоимость</td>
+</tr>
+<tr>
+<td>У3</td>
+<td>Коэффициент квалификации $К_{кв(уч)} = 0{,}874$</td>
+<td>Для расчета по формуле лекции №19 (раздел 5.2) нужны коэффициенты участия, а их в лекции нет. Значение 0,874 стоит в примерах лекций №17 (раздел 4.4) и №19 (раздел 6)</td>
+<td>Стоимость</td>
+</tr>
+<tr>
+<td>У4</td>
+<td>Численность по группам не округляется. Руководитель проекта — один человек сверх расчета по формуле</td>
+<td>Правил округления в лекции №19 нет. У руководителя проекта в таблице вместо коэффициента численности записано: «назначается отдельно»</td>
+<td>Стоимость</td>
+</tr>
+</tbody>
+</table>
 </div>
 </div>
 </div>
@@ -8929,16 +8941,16 @@ C_{без\ НДС} = C_{прям} + C_{накл}, \qquad C_{с\ НДС} = C_{б�
     <span class="s2">"fp"</span><span class="p">:</span> <span class="mi">450</span><span class="p">,</span>                       <span class="c1"># функциональные точки (задание лекции №19)</span>
     <span class="s2">"language"</span><span class="p">:</span> <span class="s2">"Java"</span><span class="p">,</span>              <span class="c1"># язык (задание лекции №19)</span>
     <span class="s2">"k_lang"</span><span class="p">:</span> <span class="mi">53</span><span class="p">,</span>                    <span class="c1"># Кп для Java (лекция №19, раздел 2.3)</span>
-    <span class="s2">"mt_product"</span><span class="p">:</span> <span class="mf">0.85</span><span class="p">,</span>              <span class="c1"># произведение коэффициентов МТ1–МТ7 (допущение Д2)</span>
+    <span class="s2">"mt_product"</span><span class="p">:</span> <span class="mf">0.85</span><span class="p">,</span>              <span class="c1"># произведение коэффициентов МТ1–МТ7 (условие У1)</span>
     <span class="s2">"months"</span><span class="p">:</span> <span class="mi">6</span><span class="p">,</span>                     <span class="c1"># плановая продолжительность Тп, мес. (задание лекции №19)</span>
     <span class="s2">"profit"</span><span class="p">:</span> <span class="mf">0.10</span><span class="p">,</span>                  <span class="c1"># рентабельность Р (задание лекции №19)</span>
     <span class="s2">"a"</span><span class="p">:</span> <span class="mf">5.17</span><span class="p">,</span>                       <span class="c1"># коэффициент A (лекция №19, раздел 4.1)</span>
     <span class="s2">"b"</span><span class="p">:</span> <span class="mf">0.94</span><span class="p">,</span>                       <span class="c1"># коэффициент B (лекция №19, раздел 4.1)</span>
     <span class="s2">"base_salary"</span><span class="p">:</span> <span class="mi">78_300</span><span class="p">,</span>           <span class="c1"># ЗПБ2015 — базовая зарплата, руб. (лекция №19, раздел 5.3)</span>
     <span class="s2">"salary_share"</span><span class="p">:</span> <span class="mf">0.65</span><span class="p">,</span>            <span class="c1"># К3 — доля зарплаты (лекция №19, раздел 5.3)</span>
-    <span class="s2">"recalc"</span><span class="p">:</span> <span class="mf">1.064</span><span class="p">,</span>                 <span class="c1"># Кпер — коэффициент пересчета (допущение Д3)</span>
-    <span class="s2">"qualification"</span><span class="p">:</span> <span class="mf">0.874</span><span class="p">,</span>          <span class="c1"># Ккв(уч) — коэффициент квалификации (допущение Д4)</span>
-    <span class="s2">"managers"</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>                   <span class="c1"># руководитель проекта назначается отдельно (допущение Д5)</span>
+    <span class="s2">"recalc"</span><span class="p">:</span> <span class="mf">1.064</span><span class="p">,</span>                 <span class="c1"># Кпер — коэффициент пересчета (условие У2)</span>
+    <span class="s2">"qualification"</span><span class="p">:</span> <span class="mf">0.874</span><span class="p">,</span>          <span class="c1"># Ккв(уч) — коэффициент квалификации (условие У3)</span>
+    <span class="s2">"managers"</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>                   <span class="c1"># руководитель проекта назначается отдельно (условие У4)</span>
     <span class="s2">"staff_ratio_range"</span><span class="p">:</span> <span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">30</span><span class="p">),</span>   <span class="c1"># для каких ОТр / Тп дана таблица коэффициентов численности</span>
     <span class="c1"># Группы исполнителей: должность и коэффициент численности Кч (лекция №19, раздел 5.1)</span>
     <span class="s2">"staff"</span><span class="p">:</span> <span class="p">[</span>
@@ -8956,7 +8968,7 @@ C_{без\ НДС} = C_{прям} + C_{накл}, \qquad C_{с\ НДС} = C_{б�
         <span class="p">(</span><span class="s2">"Функциональные точки (ФТ)"</span><span class="p">,</span> <span class="n">fmt</span><span class="p">(</span><span class="n">MOSCOW</span><span class="p">[</span><span class="s2">"fp"</span><span class="p">])),</span>
         <span class="p">(</span><span class="s2">"Язык программирования"</span><span class="p">,</span> <span class="n">MOSCOW</span><span class="p">[</span><span class="s2">"language"</span><span class="p">]),</span>
         <span class="p">(</span><span class="s2">"Кп — коэффициент преобразования для языка"</span><span class="p">,</span> <span class="n">short</span><span class="p">(</span><span class="n">MOSCOW</span><span class="p">[</span><span class="s2">"k_lang"</span><span class="p">])),</span>
-        <span class="p">(</span><span class="s2">"Произведение коэффициентов трудоемкости МТ1–МТ7 (допущение Д2)"</span><span class="p">,</span>
+        <span class="p">(</span><span class="s2">"Произведение коэффициентов трудоемкости МТ1–МТ7 (условие У1)"</span><span class="p">,</span>
          <span class="n">short</span><span class="p">(</span><span class="n">MOSCOW</span><span class="p">[</span><span class="s2">"mt_product"</span><span class="p">],</span> <span class="mi">2</span><span class="p">)),</span>
         <span class="p">(</span><span class="s2">"Плановая продолжительность Тп, мес."</span><span class="p">,</span> <span class="n">short</span><span class="p">(</span><span class="n">MOSCOW</span><span class="p">[</span><span class="s2">"months"</span><span class="p">])),</span>
         <span class="p">(</span><span class="s2">"Рентабельность Р"</span><span class="p">,</span> <span class="n">pct</span><span class="p">(</span><span class="n">MOSCOW</span><span class="p">[</span><span class="s2">"profit"</span><span class="p">])),</span>
@@ -8964,9 +8976,9 @@ C_{без\ НДС} = C_{прям} + C_{накл}, \qquad C_{с\ НДС} = C_{б�
         <span class="p">(</span><span class="s2">"B"</span><span class="p">,</span> <span class="n">short</span><span class="p">(</span><span class="n">MOSCOW</span><span class="p">[</span><span class="s2">"b"</span><span class="p">],</span> <span class="mi">2</span><span class="p">)),</span>
         <span class="p">(</span><span class="s2">"Базовая зарплата ЗПБ2015, руб."</span><span class="p">,</span> <span class="n">fmt</span><span class="p">(</span><span class="n">MOSCOW</span><span class="p">[</span><span class="s2">"base_salary"</span><span class="p">])),</span>
         <span class="p">(</span><span class="s2">"Доля зарплаты К3"</span><span class="p">,</span> <span class="n">short</span><span class="p">(</span><span class="n">MOSCOW</span><span class="p">[</span><span class="s2">"salary_share"</span><span class="p">],</span> <span class="mi">2</span><span class="p">)),</span>
-        <span class="p">(</span><span class="s2">"Коэффициент пересчета Кпер (допущение Д3)"</span><span class="p">,</span> <span class="n">short</span><span class="p">(</span><span class="n">MOSCOW</span><span class="p">[</span><span class="s2">"recalc"</span><span class="p">],</span> <span class="mi">2</span><span class="p">)),</span>
-        <span class="p">(</span><span class="s2">"Коэффициент квалификации Ккв(уч) (допущение Д4)"</span><span class="p">,</span> <span class="n">short</span><span class="p">(</span><span class="n">MOSCOW</span><span class="p">[</span><span class="s2">"qualification"</span><span class="p">],</span> <span class="mi">2</span><span class="p">)),</span>
-        <span class="p">(</span><span class="s2">"Руководителей проекта (допущение Д5)"</span><span class="p">,</span> <span class="n">short</span><span class="p">(</span><span class="n">MOSCOW</span><span class="p">[</span><span class="s2">"managers"</span><span class="p">])),</span>
+        <span class="p">(</span><span class="s2">"Коэффициент пересчета Кпер (условие У2)"</span><span class="p">,</span> <span class="n">short</span><span class="p">(</span><span class="n">MOSCOW</span><span class="p">[</span><span class="s2">"recalc"</span><span class="p">],</span> <span class="mi">2</span><span class="p">)),</span>
+        <span class="p">(</span><span class="s2">"Коэффициент квалификации Ккв(уч) (условие У3)"</span><span class="p">,</span> <span class="n">short</span><span class="p">(</span><span class="n">MOSCOW</span><span class="p">[</span><span class="s2">"qualification"</span><span class="p">],</span> <span class="mi">2</span><span class="p">)),</span>
+        <span class="p">(</span><span class="s2">"Руководителей проекта (условие У4)"</span><span class="p">,</span> <span class="n">short</span><span class="p">(</span><span class="n">MOSCOW</span><span class="p">[</span><span class="s2">"managers"</span><span class="p">])),</span>
     <span class="p">],</span>
     <span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s2">"Параметр"</span><span class="p">,</span> <span class="s2">"Значение"</span><span class="p">],</span>
 <span class="p">)</span>
@@ -9058,17 +9070,17 @@ C_{без\ НДС} = C_{прям} + C_{накл}, \qquad C_{с\ НДС} = C_{б�
 </tr>
 <tr>
 <th>10</th>
-<td>Коэффициент пересчета Кпер (допущение Д3)</td>
+<td>Коэффициент пересчета Кпер (условие У2)</td>
 <td>1,064</td>
 </tr>
 <tr>
 <th>11</th>
-<td>Коэффициент квалификации Ккв(уч) (допущение Д4)</td>
+<td>Коэффициент квалификации Ккв(уч) (условие У3)</td>
 <td>0,874</td>
 </tr>
 <tr>
 <th>12</th>
-<td>Руководителей проекта (допущение Д5)</td>
+<td>Руководителей проекта (условие У4)</td>
 <td>1</td>
 </tr>
 </tbody>
@@ -9757,8 +9769,8 @@ C_{без\ НДС} = C_{прям} + C_{накл}, \qquad C_{с\ НДС} = C_{б�
 частично сглаживают.</p>
 <p><strong>Ограничения расчета.</strong> Значения коэффициентов масштаба и множителей взяты из условия как экспертные оценки —
 модель не проверяет, верны ли они. По лекции (раздел 7.1) точность COCOMO II на уровне Post-Architecture — ±10–20%.
-Размер и трудозатраты по методике г. Москвы посчитаны только по данным задания лекции №19 и допущению Д2.
-Стоимость зависит еще от допущений Д3–Д5: коэффициент пересчета и коэффициент квалификации взяты из примеров
+Размер и трудозатраты по методике г. Москвы посчитаны только по данным задания лекции №19 и условию У1.
+Стоимость зависит еще от условий У2–У4: коэффициент пересчета и коэффициент квалификации взяты из примеров
 лекций, а не из самого задания. Поэтому 12,46 млн руб. — ориентир для сравнения, а не готовая начальная цена
 контракта.</p>
 </div>
